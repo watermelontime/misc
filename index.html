@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur's PWA: Main Page</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+	<link rel="stylesheet" href="styles.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS spezifische Meta-Tags -->
+    <link rel="apple-touch-icon" href="images/icon-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="Toffee PWA">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Optionen: default (hell), black, black-translucent (dunkel und halb-transparent). -->
+	
+    <!-- Weitere Meta-Tags für andere Geräte -->
+    <meta name="theme-color" content="#4CAF50">
+</head>
+
+<body>
+	<script src="menue.js"></script>
+
+    <h1>Arthur's PWA: Main Page</h1>
+    
+    <div>
+	Select subpage via menue.
+	</div>
+
+    <div class="menue-group">
+		<button onclick="goToPage('http://playground.ibg-online.de/qr/index.html')">QR-Gen</button>
+		<button onclick="goToPage('http://playground.ibg-online.de/xl/index.html')">XL</button>
+		<button onclick="goToPage('http://playground.ibg-online.de/reg/index.html')">REGISTER eval</button>
+		<button onclick="goToPage('http://playground.ibg-online.de/test/index.html')">Test</button>
+	</div>
+
+</body>
+</html>
