@@ -33,16 +33,30 @@
             <button onclick="generateQRCode()">QR-Code generate</button>
             <button onclick="downloadQRCode()">QR-Code save file</button>
         </div>
+        
+        <!-- Range controls below generate button -->
+        <div class="range-group">
+            <label for="size-range">QR size (px): <span id="size-value">300</span></label>
+            <input type="range" id="size-range" min="300" max="2048" step="10" value="300" oninput="updateSizeValue(this.value)">
+        </div>
+        <div class="range-group">
+            <label for="level-range">Error correction: <span id="level-value">H</span></label>
+            <input type="range" id="level-range" min="1" max="4" step="1" value="4" oninput="updateLevelValue(this.value)">
+        </div>
 	</div>
 
-	<div class="template-group">
-		<button onclick="insertWebsiteTemplate()">🌐 Website</button>
-		<button onclick="insertEmailTemplate()">📧 eMail</button>
-		<button onclick="insertWifiTemplate()">📶 WIFI</button>
-		<button onclick="insertPhoneTemplate()">📞 Telefone</button>
-		<button onclick="insertVCardTemplate()">💼 vCard</button>
-		<button onclick="insertPlainTemplate()">🗒️ Text</button>
-	</div>
+    
+
+    <h3 class="templates-heading">Templates</h3>
+    <div class="template-group">
+        <button onclick="insertWebsiteTemplate()">🌐 Website</button>
+        <button onclick="insertEmailTemplate()">📧 eMail</button>
+        <button onclick="insertWifiTemplate()">📶 WIFI</button>
+        <button onclick="insertPhoneTemplate()">📞 Telefone</button>
+        <button onclick="insertVCardTemplate()">💼 vCard min</button>
+        <button onclick="insertVCardExtendedTemplate()">💼 vCard full</button>
+        <button onclick="insertPlainTemplate()">🗒️ Text</button>
+    </div>
 
 	<div id="qrcode"></div>
 </body>
