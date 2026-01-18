@@ -261,19 +261,25 @@ async function startScanning() {
 
   // Fallback: ZXing multi-format
   try {
-    const { BrowserMultiFormatReader, NotFoundException } = await import('https://cdn.jsdelivr.net/npm/@zxing/browser@latest/+esm');
+    const zx = await import('https://cdn.jsdelivr.net/npm/@zxing/browser@latest/+esm');
+    const { BrowserMultiFormatReader } = zx;
     zxingReader = new BrowserMultiFormatReader();
     const v = document.getElementById('video');
     await zxingReader.decodeFromVideoDevice(null, v, (result, err) => {
       if (result) {
-        setText('scanResult', result.getText());
-        setText('scanFormat', result.getBarcodeFormat());
+        try {
+          setText('scanResult', result.getText());
+          setText('scanFormat', result.getBarcodeFormat());
+        } catch {}
         setText('scanStatus', 'Scanning (ZXing)');
-      } else if (err && !(err instanceof NotFoundException)) {
-        setText('scanStatus', `ZXing error: ${err}`);
+      } else if (err) {
+        const name = (err && err.name) ? err.name : '';
+        if (name !== 'NotFoundException') {
+          setText('scanStatus', `ZXing error: ${err?.message || err}`);
+        }
       }
     });
-  } catch (e) { setText('scanStatus', `ZXing load failed: ${e.message}`); }
+  } catch (e) { setText('scanStatus', `ZXing load failed: ${e?.message || e}`); }
 }
 
 async function stopScanning() {
