@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR-Code Generator & Scanner</title>
+    <title>QR-Code Scanner</title>
     <script src="https://unpkg.com/html5-qrcode"></script>
     
 	<link rel="stylesheet" href="styles.css">
@@ -25,19 +25,18 @@
     <script src="app.js"></script>
 	<script src="menue.js"></script>
 
-    <h1>QR-Code Scanner</h1>
+    <h1>QR-Code Scanner (html5-qrcode)</h1>
     
     <div class="input-group">
 		<textarea id="text-input" placeholder="QR-Code text will appear here after scan" oninput="updateInputStatus()"></textarea>
-        <div id="input-status" class="input-status"></div>
+        <div id="scanner-result" class="input-status"></div>
         <div class="button-group">
             <button onclick="toggleScanner()" id="scanner-btn">📷 Scan QR-Code</button>
         </div>
 	</div>
 
-    <div id="scanner-container" style="display: none; width: 90%; margin: 20px auto;">
+    <div id="scanner-container" style="display: none; width: 100%; margin: 20px auto;">
         <div id="scanner" style="width: 100%; max-width: 500px; margin: 0 auto;"></div>
-        <p id="scanner-result" style="text-align: center; color: #4CAF50; font-weight: bold;"></p>
         <button onclick="stopScanner()" style="width: 100%; margin-top: 10px; padding: 10px; background-color: #d32f2f; color: white; border: none; border-radius: 6px; cursor: pointer;">Stop Scanner</button>
     </div>
 

@@ -4,13 +4,6 @@
 // Description
 // QR-Code Scanner
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    updateSizeValue(document.getElementById('size-range') ? document.getElementById('size-range').value : 300);
-    updateLevelValue(document.getElementById('level-range') ? document.getElementById('level-range').value : 4);
-    updateInputStatus();
-});
-
 // QR Code Scanner with Html5Qrcode
 var scanner = null;
 var isScannerActive = false;
@@ -36,7 +29,10 @@ function startScanner() {
     scanner = new Html5Qrcode("scanner");
     isScannerActive = true;
     document.getElementById('scanner-btn').textContent = '⏹️ Stop Scan';
-    document.getElementById('scanner-result').textContent = 'Starting camera...';
+    var resultElement = document.getElementById('scanner-result');
+    resultElement.textContent = 'Starting camera...';
+    resultElement.style.color = '#1976D2';
+    console.log('Scanner started, waiting for camera...');
     
     Html5Qrcode.getCameras().then(devices => {
         if (devices && devices.length) {
@@ -91,7 +87,7 @@ function stopScanner() {
             isScannerActive = false;
             document.getElementById('scanner-btn').textContent = '📷 Scan QR';
             document.getElementById('scanner-container').style.display = 'none';
-            document.getElementById('scanner-result').textContent = '';
+            // Keep the result message visible for user reference
         }).catch(err => {
             console.error('Error stopping scanner:', err);
         });
@@ -99,18 +95,22 @@ function stopScanner() {
 }
 
 function onScanSuccess(decodedText, decodedResult) {
+    console.log('SUCCESS: Scanned QR Code:', decodedText);
+    
     // Populate textarea with scanned QR code content
     document.getElementById('text-input').value = decodedText;
-    updateInputStatus();
-    document.getElementById('scanner-result').textContent = '✓ QR Code scanned successfully!';
-    document.getElementById('scanner-result').style.color = '#4CAF50';
+    
+    // Update result display with success message
+    var resultElement = document.getElementById('scanner-result');
+    resultElement.textContent = '✓ QR Code scanned successfully!';
+    resultElement.style.color = '#4CAF50';
+    resultElement.style.display = 'block';
+    console.log('Result element updated:', resultElement.textContent);
     
     // Stop scanner after successful scan
     setTimeout(() => {
         stopScanner();
     }, 1500);
-    
-    console.log('Scanned QR Code:', decodedText);
 }
 
 function onScanFailure(error) {
