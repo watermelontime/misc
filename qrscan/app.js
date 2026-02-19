@@ -40,13 +40,31 @@ function startScanner() {
     
     Html5Qrcode.getCameras().then(devices => {
         if (devices && devices.length) {
+            // Prefer rear camera on iOS/mobile
             var cameraId = devices[0].id;
+            
+            // Look for rear/back camera
+            for (var i = 0; i < devices.length; i++) {
+                var label = devices[i].label.toLowerCase();
+                // iOS labels: "Front Camera", "Back Camera" or "Camera 0", "Camera 1"
+                if (label.includes('back') || label.includes('rear') || label.includes('environment')) {
+                    cameraId = devices[i].id;
+                    console.log('Using rear camera:', devices[i].label);
+                    break;
+                }
+            }
+            
+            // If no rear camera found and multiple devices exist, try the second one
+            if (devices.length > 1 && cameraId === devices[0].id) {
+                cameraId = devices[1].id;
+                console.log('Trying alternate camera:', devices[1].label);
+            }
+            
             scanner.start(
                 cameraId,
                 {
                     fps: 10,
-                    qrbox: { width: 250, height: 250 },
-                    facingMode: "environment"  // Force rear camera
+                    qrbox: { width: 250, height: 250 }
                 },
                 onScanSuccess,
                 onScanFailure
