@@ -45,7 +45,8 @@ function startScanner() {
                 cameraId,
                 {
                     fps: 10,
-                    qrbox: { width: 250, height: 250 }
+                    qrbox: { width: 250, height: 250 },
+                    facingMode: "environment"  // Force rear camera
                 },
                 onScanSuccess,
                 onScanFailure
