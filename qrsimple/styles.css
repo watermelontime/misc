@@ -126,7 +126,7 @@ body {
 
     .templates-heading {
         width: 100%;
-        /*text-align: center;*/
+        text-align: center;
         margin: 10px 0 6px 0;
         /*font-size: 1.25rem;*/
         font-weight: 600;
@@ -166,7 +166,7 @@ body {
         text-align: left;
         margin-top: -10px;
         margin-bottom: 10px;
-        white-space: pre-wrap; /* Preserve spaces AND allow wrapping */
+        white-space: pre; /* Preserve multiple spaces for alignment */
     }
 
     .input-status-overflow {

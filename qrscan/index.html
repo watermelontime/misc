@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Generator & Scanner</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    
+	<link rel="stylesheet" href="styles.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS spezifische Meta-Tags -->
+    <link rel="apple-touch-icon" href="images/icon-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="Toffee PWA">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Optionen: default (hell), black, black-translucent (dunkel und halb-transparent). -->
+	
+    <!-- Weitere Meta-Tags für andere Geräte -->
+    <meta name="theme-color" content="#4CAF50">
+</head>
+
+<body>
+    <script src="app.js"></script>
+	<script src="menue.js"></script>
+
+    <h1>QR-Code Scanner</h1>
+    
+    <div class="input-group">
+		<textarea id="text-input" placeholder="QR-Code text will appear here after scan" oninput="updateInputStatus()"></textarea>
+        <div id="input-status" class="input-status"></div>
+        <div class="button-group">
+            <button onclick="toggleScanner()" id="scanner-btn">📷 Scan QR-Code</button>
+        </div>
+	</div>
+
+    <div id="scanner-container" style="display: none; width: 90%; margin: 20px auto;">
+        <h3>QR Code Scanner</h3>
+        <div id="scanner" style="width: 100%; max-width: 500px; margin: 0 auto;"></div>
+        <p id="scanner-result" style="text-align: center; color: #4CAF50; font-weight: bold;"></p>
+        <button onclick="stopScanner()" style="width: 100%; margin-top: 10px; padding: 10px; background-color: #d32f2f; color: white; border: none; border-radius: 6px; cursor: pointer;">Stop Scanner</button>
+    </div>
+
+    <div id="help-section">
+        <h3>Help & Info</h3>
+        <p>This QR code scanner allows you to scan QR codes and display their content.</p>
+    </div>
+</body>
+</html>

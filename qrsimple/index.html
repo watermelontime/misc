@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+	<link rel="stylesheet" href="styles.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS spezifische Meta-Tags -->
+    <link rel="apple-touch-icon" href="images/icon-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="Toffee PWA">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Optionen: default (hell), black, black-translucent (dunkel und halb-transparent). -->
+	
+    <!-- Weitere Meta-Tags für andere Geräte -->
+    <meta name="theme-color" content="#4CAF50">
+</head>
+
+<body>
+    <script src="app.js"></script>
+	<script src="menue.js"></script>
+
+    <h1>QR-Code Generator</h1>
+    
+    <div class="input-group">
+		<textarea id="text-input" placeholder="add QR-Code text here" oninput="updateInputStatus()"></textarea>
+        <div id="input-status" class="input-status"></div>
+        <div class="button-group">
+            <button onclick="generateQRCode()">QR-Code generate</button>
+            <button onclick="downloadQRCode()">QR-Code save file</button>
+        </div>
+        
+        <!-- Range controls below generate button -->
+        <div class="range-group">
+            <label for="size-range">QR size (px): <span id="size-value">300</span></label>
+            <input type="range" id="size-range" min="300" max="2048" step="10" value="300" oninput="updateSizeValue(this.value)">
+        </div>
+        <div class="range-group">
+            <label for="level-range">Error correction: <span id="level-value">High</span></label>
+            <input type="range" id="level-range" min="1" max="4" step="1" value="4" oninput="updateLevelValue(this.value); updateInputStatus()">
+        </div>
+	</div>
+
+    
+
+    <h3 class="templates-heading">Templates</h3>
+    <div class="template-group">
+        <button onclick="insertWebsiteTemplate(); updateInputStatus()">🌐 Website</button>
+        <button onclick="insertEmailTemplate(); updateInputStatus()">📧 eMail</button>
+        <button onclick="insertWifiTemplate(); updateInputStatus()">📶 WIFI</button>
+        <button onclick="insertPhoneTemplate(); updateInputStatus()">📞 Telefone</button>
+        <button onclick="insertVCardTemplate(); updateInputStatus()">💼 vCard min</button>
+        <button onclick="insertVCardExtendedTemplate(); updateInputStatus()">💼 vCard full</button>
+        <button onclick="insertPlainTemplate(); updateInputStatus()">🗒️ Text</button>
+    </div>
+
+	<div id="qrcode"></div>
+</body>
+</html>

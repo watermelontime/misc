@@ -1,26 +1,15 @@
 
-// Status: functional with error handling, byte length calculation, and user input status display. Templates for common QR code types included. UI updates on input change.
+// Status: functional, but NO QR-Code generation sometimes fails silently (no error message due to library limitations); in mode Error Correction=M it fails at around 1270 bytes, in mode H at around 1273 bytes;
 
 // Description
 // QR-Code Generator
-// - uses qrcode library from https://github.com/davidshimjs/qrcodejs
-//   - full QR spec support with proper error correction
+// - uses QRCode.js library from https://github.com/davidshimjs/qrcodejs
+//   - does not give error responses, but fails silently if text exceeds capacity for selected error correction level
 //   - max capacity: ~2953 bytes (L), ~2331 bytes (M), ~1663 bytes (Q), ~1273 bytes (H) for UTF-8 text
 //   - multi-byte characters reduce total character count significantly
-//   - generates to canvas with error callback support
+//   - is able to encode UTF-8 text, but actual byte length must be considered for limits
 // - HTML file has: <meta charset="UTF-8">, so all user inputs will be treated as UTF-8
 // - Templates: should either contain only ASCII characters OR HTML file should be saved with UTF-8 encoding to ensure correct byte length calculation
-
-// QR Code library downloaded from:
-// https://cdn.jsdelivr.net/npm/qrcode@1.4.4/
-// https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js
-// Limits from library documentation:
-//   | Mode         | L    | M    | Q    | H    |
-//   |--------------|------|------|------|------|
-//   | Numeric      | 7089 | 5596 | 3993 | 3057 |
-//   | Alphanumeric | 4296 | 3391 | 2420 | 1852 |
-//   | Byte         | 2953 | 2331 | 1663 | 1273 |
-//   | Kanji        | 1817 | 1435 | 1024 | 784  |
 
 function generateQRCode() {
     // Hole den Text aus dem Eingabefeld
@@ -32,45 +21,34 @@ function generateQRCode() {
         return;
     }
 
-    // Delete the previous QR code if it exists
+    // Lösche den vorherigen QR-Code, falls einer existiert
     document.getElementById('qrcode').innerHTML = '';
 
-    // Read control values (size and error correction)
+    // Lese Steuerungswerte (Größe und Fehlerkorrektur)
     var sizeInput = document.getElementById('size-range');
     var corrLevelInput = document.getElementById('level-range');
     var size = sizeInput ? parseInt(sizeInput.value, 10) : 300;
     var corrLevelVal = corrLevelInput ? parseInt(corrLevelInput.value, 10) : 4;
 
     var levelMap = {
-        1: 'L',
-        2: 'M',
-        3: 'Q',
-        4: 'H'
+        1: QRCode.CorrectLevel.L,
+        2: QRCode.CorrectLevel.M,
+        3: QRCode.CorrectLevel.Q,
+        4: QRCode.CorrectLevel.H
     };
-    var levelConst = levelMap[corrLevelVal] || 'H';
-    
-    // Create a canvas element
-    var canvas = document.createElement('canvas');
-    document.getElementById('qrcode').appendChild(canvas);
+    var levelConst = levelMap[corrLevelVal] || QRCode.CorrectLevel.H;
     
     console.log('Text bytes:', new TextEncoder().encode(text).length);
     console.log('Correction level:', corrLevelVal, '→', levelConst);
 
-    // Create the QR code on the canvas with error callback
-    QRCode.toCanvas(canvas, text, {
-        width: size,
-        height: size,
-        errorCorrectionLevel: levelConst,
-        color: {
-            dark: '#000000',
-            light: '#ffffff'
-        },
-        margin: 0 // extra margin around the QR code
-    }, function(error) {
-        if (error) {
-            console.error('QR-Code generation failed:', error);
-            document.getElementById('qrcode').innerHTML = '<p style="color: red; text-align: center;">QR generation failed.<br>Try reducing text or lowering error correction.<br>See help section for limits.</p>';
-        }
+    // Erstelle den QR-Code
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: text,
+        width: size,  // Größe des QR-Codes
+        height: size, // gleiche Breite/Höhe für quadratischen Code
+        colorDark : "#000000",  // Farbe des QR-Codes
+        colorLight : "#ffffff", // Hintergrundfarbe
+        correctLevel : levelConst // Fehlerkorrektur-Level (L, M, Q, H)
     });
 }
 
@@ -162,10 +140,10 @@ function updateInputStatus() {
     var corrLevelVal = parseInt(levelInput.value, 10);
     
     var limitsInByte = {
-        1: 2953,  // L
-        2: 2331,  // M
-        3: 1663,  // Q
-        4: 1273   // H
+        1: 2940,  // L
+        2: 1270,  // M Theoretically: 2331 byte, but it does not work
+        3: 1660,  // Q
+        4: 1270   // H
     };
     var maxBytesCount = limitsInByte[corrLevelVal] || 1273;
     var isOverLimit = byteCount > maxBytesCount;

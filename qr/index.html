@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR-Code Generator</title>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="lib/qrcode144.min.js"></script>
     
 	<link rel="stylesheet" href="styles.css">
 
@@ -28,20 +28,21 @@
     <h1>QR-Code Generator</h1>
     
     <div class="input-group">
-		<textarea id="text-input" placeholder="Text eingeben"></textarea>        
+		<textarea id="text-input" placeholder="add QR-Code text here" oninput="updateInputStatus()"></textarea>
+        <div id="input-status" class="input-status"></div>
         <div class="button-group">
-            <button onclick="generateQRCode()">QR-Code generate</button>
-            <button onclick="downloadQRCode()">QR-Code save file</button>
+            <button onclick="generateQRCode()">QR-Code Generate</button>
+            <button onclick="downloadQRCode()">Save file</button>
         </div>
         
         <!-- Range controls below generate button -->
         <div class="range-group">
-            <label for="size-range">QR size (px): <span id="size-value">300</span></label>
-            <input type="range" id="size-range" min="300" max="2048" step="10" value="300" oninput="updateSizeValue(this.value)">
+            <label for="size-range">QR size (pixel): <span id="size-value">300</span></label>
+            <input type="range" id="size-range" min="300" max="2000" step="10" value="300" oninput="updateSizeValue(this.value)">
         </div>
         <div class="range-group">
-            <label for="level-range">Error correction: <span id="level-value">H</span></label>
-            <input type="range" id="level-range" min="1" max="4" step="1" value="4" oninput="updateLevelValue(this.value)">
+            <label for="level-range">Error correction level: <span id="level-value">High</span></label>
+            <input type="range" id="level-range" min="1" max="4" step="1" value="4" oninput="updateLevelValue(this.value); updateInputStatus()">
         </div>
 	</div>
 
@@ -49,15 +50,43 @@
 
     <h3 class="templates-heading">Templates</h3>
     <div class="template-group">
-        <button onclick="insertWebsiteTemplate()">🌐 Website</button>
-        <button onclick="insertEmailTemplate()">📧 eMail</button>
-        <button onclick="insertWifiTemplate()">📶 WIFI</button>
-        <button onclick="insertPhoneTemplate()">📞 Telefone</button>
-        <button onclick="insertVCardTemplate()">💼 vCard min</button>
-        <button onclick="insertVCardExtendedTemplate()">💼 vCard full</button>
-        <button onclick="insertPlainTemplate()">🗒️ Text</button>
+        <button onclick="insertWebsiteTemplate(); updateInputStatus()">🌐 Website</button>
+        <button onclick="insertEmailTemplate(); updateInputStatus()">📧 eMail</button>
+        <button onclick="insertWifiTemplate(); updateInputStatus()">📶 WIFI</button>
+        <button onclick="insertPhoneTemplate(); updateInputStatus()">📞 Telefone</button>
+        <button onclick="insertVCardTemplate(); updateInputStatus()">💼 vCard min</button>
+        <button onclick="insertVCardExtendedTemplate(); updateInputStatus()">💼 vCard full</button>
+        <button onclick="insertPlainTemplate(); updateInputStatus()">🗒️ Text</button>
     </div>
 
 	<div id="qrcode"></div>
+
+    <div id="help-section">
+        <h3>Help & Info</h3>
+        <p>This QR code generator allows you to create QR codes with different error correction levels and sizes. The input text is limited based on the selected error correction level, which is indicated in the status below the input field. Use the templates for quick generation of common QR code types like URLs, emails, WiFi, etc.</p>
+        <p>Note: The maximum byte capacity is an approximation and may vary based on the actual content and encoding used in the QR code.</p>
+        <p>Here are some limits and properties from the library documentation:</p>
+        <ul>
+            <li><strong>Data Types:</strong> The library supports various data types including numeric, alphanumeric, byte/binary, and kanji characters.</li>
+            <li><strong>Dimension/Size:</strong> The size of the QR code can be adjusted (in pixel). Larger sizes may be needed for higher data capacities or error correction levels.</li>
+            <li><strong>Error Correction Levels:</strong> L (Low), M (Medium), Q (Quartile), H (High).
+                <pre style="background-color: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: inherit;">| Level        | Error resistance |
+|--------------|------------------|
+| L (Low)      | ~ 7%             |
+| M (Medium)   | ~15%             |
+| Q (Quartile) | ~25%             |
+| H (High)     | ~30%             |</pre>
+            </li><li><strong>Maximum Capacity:</strong> Depends on the error correction level and the type of data encoded. Here are the capacity limits for QR Code Version 40 (highest version):
+                <pre style="background-color: #f5f5f5; padding: 12px; border-radius: 4px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: inherit;">Mode     | L    | M    | Q    | H
+---------|------|------|------|------
+Numeric  | 7089 | 5596 | 3993 | 3057
+Alphanum.| 4296 | 3391 | 2420 | 1852
+Byte     | 2953 | 2331 | 1663 | 1273
+Kanji    | 1817 | 1435 | 1024 |  784</pre>
+            </li>
+
+        </ul> 
+
+    </div>
 </body>
 </html>
