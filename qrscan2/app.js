@@ -1,10 +1,8 @@
 
-// Status: experimental
+// Status: works (sometimes the front camera is used on mobile)
 
 // Description
 // QR-Code Scanner with ZXing.js
-
-// QR Code Scanner with ZXing.js
 var video = null;
 var codeReader = null;
 var isScannerActive = false;
