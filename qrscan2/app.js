@@ -48,17 +48,28 @@ function startScanner() {
         .then(videoInputDevices => {
             console.log('Available devices:', videoInputDevices);
             if (videoInputDevices.length > 0) {
-                // Prefer rear camera
+                // Prefer rear camera - try multiple strategies
                 var selectedDeviceId = videoInputDevices[0].deviceId;
+                var rearCameraFound = false;
                 
+                // Strategy 1: Look for device label containing "back", "rear", or "environment"
                 for (var i = 0; i < videoInputDevices.length; i++) {
                     var label = videoInputDevices[i].label.toLowerCase();
                     if (label.includes('back') || label.includes('rear') || label.includes('environment')) {
                         selectedDeviceId = videoInputDevices[i].deviceId;
-                        console.log('Using rear camera:', videoInputDevices[i].label);
+                        console.log('Strategy 1 - Using rear camera by label:', videoInputDevices[i].label);
+                        rearCameraFound = true;
                         break;
                     }
                 }
+                
+                // Strategy 2: If not found by label and multiple cameras exist, use second device (usually rear on mobile)
+                if (!rearCameraFound && videoInputDevices.length > 1) {
+                    selectedDeviceId = videoInputDevices[1].deviceId;
+                    console.log('Strategy 2 - Using second camera (likely rear):', videoInputDevices[1].label);
+                }
+                
+                console.log('Selected camera deviceId:', selectedDeviceId);
                 
                 // Start decoding from video element
                 codeReader.decodeFromVideoDevice(selectedDeviceId, video, (result, err) => {
