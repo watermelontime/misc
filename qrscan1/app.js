@@ -28,7 +28,9 @@ function startScanner() {
     
     scanner = new Html5Qrcode("scanner");
     isScannerActive = true;
-    document.getElementById('scanner-btn').textContent = '⏹️ Stop Scan';
+    var scanBtn = document.getElementById('scanner-btn');
+    scanBtn.textContent = '⏹️ Stop Scan';
+    scanBtn.style.backgroundColor = '#d32f2f';
     var resultElement = document.getElementById('scanner-result');
     resultElement.textContent = 'Starting camera...';
     resultElement.style.color = '#1976D2';
@@ -85,7 +87,9 @@ function stopScanner() {
         scanner.stop().then(() => {
             scanner.clear();
             isScannerActive = false;
-            document.getElementById('scanner-btn').textContent = '📷 Scan QR';
+            var scanBtn = document.getElementById('scanner-btn');
+            scanBtn.textContent = '📷 Scan QR-Code';
+            scanBtn.style.backgroundColor = '#4CAF50';
             document.getElementById('scanner-container').style.display = 'none';
             // Keep the result message visible for user reference
         }).catch(err => {
