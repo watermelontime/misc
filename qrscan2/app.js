@@ -118,9 +118,13 @@ function onScanSuccess(decodedText) {
     // Populate textarea with scanned QR code content
     document.getElementById('text-input').value = decodedText;
     
+    var resultElementLink = document.getElementById('scanner-result-link');
+    resultElementLink.href = decodedText;
+    resultElementLink.title = decodedText;
+
     // Update result display with success message
     var resultElement = document.getElementById('scanner-result');
-    resultElement.textContent = '✓ QR Code scanned successfully!';
+    resultElement.textContent = '✓ QR Code scan: successful!';
     resultElement.style.color = '#4CAF50';
     resultElement.style.display = 'block';
     console.log('Result element updated:', resultElement.textContent);
