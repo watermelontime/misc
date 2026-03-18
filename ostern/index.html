@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ostern 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="titel.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192x192.svg">
+    <meta name="theme-color" content="#e74c3c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Ostern 2026">
+</head>
+<body>
+
+<div class="werkstatt">
+
+    <!-- Boden -->
+    <div class="floor"></div>
+
+    <!-- Regale -->
+    <div class="shelf shelf-left"></div>
+    <div class="shelf shelf-right"></div>
+
+    <!-- Tisch -->
+    <div class="table"></div>
+
+    <!-- Farbeimer -->
+    <div class="bucket bucket-red bucket-1"></div>
+    <div class="bucket bucket-blue bucket-2"></div>
+    <div class="bucket bucket-yellow bucket-3"></div>
+    <div class="bucket bucket-green bucket-4"></div>
+
+    <!-- Deko-Eier -->
+    <div class="deko-egg deko-egg-1"></div>
+    <div class="deko-egg deko-egg-2"></div>
+    <div class="deko-egg deko-egg-3"></div>
+    <div class="deko-egg deko-egg-4"></div>
+    <div class="deko-egg deko-egg-5"></div>
+    <div class="deko-egg deko-egg-6"></div>
+
+    <!-- Deko-Pinsel -->
+    <div class="deko-brush deko-brush-1"></div>
+    <div class="deko-brush deko-brush-2"></div>
+
+    <!-- Osterhase -->
+    <div class="bunny-container" role="img" aria-label="Osterhase – klicke auf den Kopf!">
+        <svg class="bunny-svg" viewBox="0 0 200 360" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ohren -->
+            <g class="ear-left" style="transform-origin: 72px 95px;">
+                <ellipse cx="72" cy="50" rx="18" ry="50" fill="#8B6C42"/>
+                <ellipse cx="72" cy="50" rx="10" ry="40" fill="#D4A88C"/>
+            </g>
+            <g class="ear-right" style="transform-origin: 128px 95px;">
+                <ellipse cx="128" cy="50" rx="18" ry="50" fill="#8B6C42"/>
+                <ellipse cx="128" cy="50" rx="10" ry="40" fill="#D4A88C"/>
+            </g>
+
+            <!-- Kopf -->
+            <ellipse cx="100" cy="115" rx="42" ry="38" fill="#8B6C42"/>
+
+            <!-- Augen -->
+            <circle cx="85" cy="108" r="6" fill="#222"/>
+            <circle cx="87" cy="105" r="2.5" fill="#fff"/>
+            <circle cx="115" cy="108" r="6" fill="#222"/>
+            <circle cx="117" cy="105" r="2.5" fill="#fff"/>
+
+            <!-- Nase -->
+            <ellipse cx="100" cy="122" rx="5" ry="3.5" fill="#E8A0BF"/>
+
+            <!-- Schnurrhaare -->
+            <line x1="60" y1="118" x2="85" y2="120" stroke="#555" stroke-width="1"/>
+            <line x1="60" y1="125" x2="85" y2="124" stroke="#555" stroke-width="1"/>
+            <line x1="115" y1="120" x2="140" y2="118" stroke="#555" stroke-width="1"/>
+            <line x1="115" y1="124" x2="140" y2="125" stroke="#555" stroke-width="1"/>
+
+            <!-- Mund -->
+            <path d="M93,130 Q100,137 107,130" fill="none" stroke="#555" stroke-width="1.2"/>
+
+            <!-- Körper -->
+            <ellipse cx="100" cy="230" rx="55" ry="75" fill="#8B6C42"/>
+
+            <!-- Schürze -->
+            <rect x="60" y="180" width="80" height="100" rx="6" fill="#F5F0E1" opacity="0.95"/>
+            <rect x="75" y="170" width="50" height="16" rx="4" fill="#F5F0E1" opacity="0.95"/>
+
+            <!-- Farbkleckse auf Schürze -->
+            <circle cx="80"  cy="210" r="7"  fill="#e74c3c" opacity="0.85"/>
+            <circle cx="105" cy="198" r="5"  fill="#3498db" opacity="0.85"/>
+            <circle cx="120" cy="225" r="8"  fill="#f1c40f" opacity="0.85"/>
+            <circle cx="90"  cy="245" r="6"  fill="#2ecc71" opacity="0.85"/>
+            <circle cx="115" cy="255" r="5"  fill="#9b59b6" opacity="0.85"/>
+            <circle cx="75"  cy="265" r="4"  fill="#e67e22" opacity="0.85"/>
+
+            <!-- Schürzen-Band -->
+            <path d="M60,195 Q50,195 48,200 L48,197" fill="none" stroke="#D4C5A0" stroke-width="3"/>
+            <path d="M140,195 Q150,195 152,200 L152,197" fill="none" stroke="#D4C5A0" stroke-width="3"/>
+
+            <!-- Arme -->
+            <ellipse cx="50" cy="220" rx="18" ry="12" fill="#8B6C42" transform="rotate(-20, 50, 220)"/>
+            <ellipse cx="150" cy="220" rx="18" ry="12" fill="#8B6C42" transform="rotate(20, 150, 220)"/>
+
+            <!-- Pfoten (Hände) -->
+            <ellipse cx="38" cy="215" rx="9" ry="7" fill="#A07850"/>
+            <ellipse cx="162" cy="215" rx="9" ry="7" fill="#A07850"/>
+
+            <!-- Beine -->
+            <ellipse cx="78" cy="315" rx="22" ry="14" fill="#8B6C42"/>
+            <ellipse cx="122" cy="315" rx="22" ry="14" fill="#8B6C42"/>
+
+            <!-- Füße -->
+            <ellipse cx="72" cy="330" rx="25" ry="12" fill="#A07850"/>
+            <ellipse cx="128" cy="330" rx="25" ry="12" fill="#A07850"/>
+
+            <!-- Bauchfell -->
+            <ellipse cx="100" cy="240" rx="28" ry="35" fill="#C4A672" opacity="0.4"/>
+        </svg>
+    </div>
+
+    <!-- Spielen-Button -->
+    <div class="play-button-wrapper">
+        <a href="spiel.html" class="btn-3d">&#127912; Spielen</a>
+    </div>
+
+</div>
+
+<script src="titel.js"></script>
+
+<!-- Service Worker Registration -->
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
+</script>
+
+</body>
+</html>

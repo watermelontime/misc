@@ -1,0 +1,202 @@
+/* ============================================================
+   titel.css – Styles für die Titel-Seite (Osterwerkstatt)
+   ============================================================ */
+
+/* --- Werkstatt-Hintergrund --- */
+.werkstatt {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background:
+        linear-gradient(180deg, #d4a76a 0%, #c49358 60%, #8b6914 100%);
+    overflow: hidden;
+}
+
+/* Holzwand-Textur */
+.werkstatt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(0,0,0,0.08) 80px,
+        rgba(0,0,0,0.08) 82px
+    );
+    pointer-events: none;
+}
+
+/* Boden */
+.floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20%;
+    background: linear-gradient(180deg, #8b6914 0%, #6b4f12 100%);
+    border-top: 4px solid #5a4210;
+}
+
+/* --- Regal --- */
+.shelf {
+    position: absolute;
+    height: 12px;
+    background: linear-gradient(180deg, #a0722a, #7a5520);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+.shelf-left {
+    left: 3%;
+    top: 25%;
+    width: 22%;
+}
+.shelf-right {
+    right: 3%;
+    top: 20%;
+    width: 22%;
+}
+
+/* --- Tisch --- */
+.table {
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+    width: 28%;
+    height: 22%;
+    background: linear-gradient(180deg, #b8860b, #966b08);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.table::before,
+.table::after {
+    content: '';
+    position: absolute;
+    bottom: -18%;
+    width: 10%;
+    height: 18%;
+    background: #8b6914;
+}
+.table::before { left: 10%; }
+.table::after  { right: 10%; }
+
+/* --- Farbeimer --- */
+.bucket {
+    position: absolute;
+    width: 40px;
+    height: 45px;
+    border-radius: 0 0 6px 6px;
+    border-top: none;
+    clip-path: polygon(5% 0%, 95% 0%, 85% 100%, 15% 100%);
+}
+.bucket::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 15%;
+    width: 70%;
+    height: 16px;
+    border: 3px solid #666;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+}
+.bucket-red    { background: #e74c3c; }
+.bucket-blue   { background: #3498db; }
+.bucket-yellow { background: #f1c40f; }
+.bucket-green  { background: #2ecc71; }
+
+.bucket-1 { left: 5%; top: calc(25% - 45px); }
+.bucket-2 { left: 13%; top: calc(25% - 45px); }
+.bucket-3 { right: 7%; top: calc(20% - 45px); }
+.bucket-4 { right: 15%; top: calc(20% - 45px); }
+
+/* --- Kleine Deko-Eier --- */
+.deko-egg {
+    position: absolute;
+    width: 22px;
+    height: 28px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+.deko-egg-1 { background: #e74c3c; left: 22%; top: calc(25% - 30px); }
+.deko-egg-2 { background: #9b59b6; right: 5%; top: calc(20% - 30px); }
+.deko-egg-3 { background: #f1c40f; right: 22%; top: calc(20% - 30px); }
+.deko-egg-4 { background: #2ecc71; left: 8%; bottom: 22%; }
+.deko-egg-5 { background: #e67e22; right: 12%; bottom: calc(20% + 22% - 30px); }
+.deko-egg-6 { background: #3498db; right: 20%; bottom: calc(20% + 22% - 30px); }
+
+/* Deko-Pinsel */
+.deko-brush {
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background: #8B4513;
+    border-radius: 2px;
+}
+.deko-brush::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -3px;
+    width: 14px;
+    height: 18px;
+    border-radius: 4px 4px 2px 2px;
+}
+.deko-brush-1 { left: 18%; top: calc(25% - 42px); transform: rotate(-10deg); }
+.deko-brush-1::before { background: #e74c3c; }
+.deko-brush-2 { right: 25%; bottom: calc(20% + 22% - 42px); transform: rotate(8deg); }
+.deko-brush-2::before { background: #3498db; }
+
+/* ================================================
+   Osterhase – Titel-Seite (SVG wird inline sein,
+   hier nur Container + Ohrenwackel-Animation)
+   ================================================ */
+.bunny-container {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(180px, 30vw, 300px);
+    height: clamp(320px, 55vh, 520px);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.bunny-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ohrenwackel-Animation */
+@keyframes wiggle-left {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-12deg); }
+    40%  { transform: rotate(8deg); }
+    60%  { transform: rotate(-6deg); }
+    80%  { transform: rotate(4deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes wiggle-right {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(12deg); }
+    40%  { transform: rotate(-8deg); }
+    60%  { transform: rotate(6deg); }
+    80%  { transform: rotate(-4deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.ear-left.wiggle {
+    animation: wiggle-left 0.5s ease;
+    transform-origin: center bottom;
+}
+.ear-right.wiggle {
+    animation: wiggle-right 0.5s ease;
+    transform-origin: center bottom;
+}
+
+/* --- Spielen-Button --- */
+.play-button-wrapper {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    z-index: 20;
+}

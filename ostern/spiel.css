@@ -1,0 +1,213 @@
+/* ============================================================
+   spiel.css – Styles für die Spiele-Seite
+   ============================================================ */
+
+/* --- Spielfeld --- */
+.game-scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(180deg,
+        #87CEEB 0%,
+        #b3e0f2 55%,
+        #90c95c 55%,
+        #6aad3a 100%);
+    overflow: hidden;
+}
+
+/* --- HUD (Heads-Up Display) --- */
+.hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 8px 16px;
+    pointer-events: none;
+}
+
+.score-display {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- Leben (Pinsel) --- */
+.lives-display {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    display: flex;
+    gap: 6px;
+    z-index: 50;
+}
+
+.life-brush {
+    width: 12px;
+    height: 40px;
+    position: relative;
+    transition: opacity 0.4s, transform 0.4s;
+}
+.life-brush.lost {
+    opacity: 0;
+    transform: scale(0.3) rotate(30deg);
+}
+
+/* Pinsel-Griff */
+.life-brush .handle {
+    position: absolute;
+    bottom: 0;
+    left: 2px;
+    width: 8px;
+    height: 24px;
+    background: #8B4513;
+    border-radius: 1px;
+}
+
+/* Pinsel-Haare */
+.life-brush .bristles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 18px;
+    background: #e74c3c;
+    border-radius: 4px 4px 2px 2px;
+}
+
+/* --- Start-Overlay --- */
+.start-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 60;
+    background: rgba(0,0,0,0.25);
+}
+
+.start-overlay h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+}
+
+.start-overlay.hidden {
+    display: none;
+}
+
+/* --- Game Over Overlay --- */
+.gameover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 70;
+    background: rgba(0,0,0,0.55);
+}
+
+.gameover-overlay.hidden {
+    display: none;
+}
+
+.gameover-overlay h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: #e74c3c;
+    text-shadow: 3px 3px 0 #fff;
+    margin-bottom: 10px;
+}
+
+.gameover-overlay .final-score {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.gameover-overlay .btn-3d {
+    margin: 6px;
+}
+
+/* --- Meilenstein-Buttons (Weiter / Neu) --- */
+.milestone-buttons {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    z-index: 110;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.milestone-buttons.hidden {
+    display: none;
+}
+
+/* --- Fallende Eier --- */
+.falling-egg {
+    position: absolute;
+    width: 36px;
+    height: 46px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.falling-egg svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Zerbrochenes Ei --- */
+.broken-egg {
+    position: absolute;
+    z-index: 15;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.broken-egg.fading {
+    opacity: 0;
+}
+
+/* --- Spieler-Hase --- */
+.player-bunny {
+    position: absolute;
+    bottom: 2%;
+    width: clamp(70px, 12vw, 110px);
+    height: clamp(100px, 18vw, 160px);
+    z-index: 30;
+    transition: left 0.08s linear;
+}
+
+.player-bunny svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Zurück-Button --- */
+.back-button {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    z-index: 50;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #555;
+    text-decoration: none;
+}
+.back-button:hover {
+    background: rgba(255,255,255,0.95);
+}
