@@ -16,12 +16,22 @@
 
 <div class="werkstatt">
 
+    <!-- Frohe Ostern -->
+    <div class="frohe-ostern">Frohe Ostern</div>
+
     <!-- Boden -->
     <div class="floor"></div>
 
     <!-- Regale -->
     <div class="shelf shelf-left"></div>
     <div class="shelf shelf-right"></div>
+    <div class="shelf shelf-center"></div>
+
+    <!-- Schrank -->
+    <div class="schrank">
+        <div class="schrank-door schrank-door-left"></div>
+        <div class="schrank-door schrank-door-right"></div>
+    </div>
 
     <!-- Tisch -->
     <div class="table"></div>
@@ -32,17 +42,29 @@
     <div class="bucket bucket-yellow bucket-3"></div>
     <div class="bucket bucket-green bucket-4"></div>
 
-    <!-- Deko-Eier -->
-    <div class="deko-egg deko-egg-1"></div>
-    <div class="deko-egg deko-egg-2"></div>
-    <div class="deko-egg deko-egg-3"></div>
-    <div class="deko-egg deko-egg-4"></div>
-    <div class="deko-egg deko-egg-5"></div>
-    <div class="deko-egg deko-egg-6"></div>
-
-    <!-- Deko-Pinsel -->
-    <div class="deko-brush deko-brush-1"></div>
-    <div class="deko-brush deko-brush-2"></div>
+    <!-- Pinsel in Bechern auf Regalen -->
+    <div class="brush-cup brush-cup-1">
+        <div class="cup-brush" style="--b-color:#e74c3c; --b-rot:-8deg; --b-left:15%"></div>
+        <div class="cup-brush" style="--b-color:#3498db; --b-rot:6deg; --b-left:55%"></div>
+    </div>
+    <div class="brush-cup brush-cup-2">
+        <div class="cup-brush" style="--b-color:#2ecc71; --b-rot:-5deg; --b-left:10%"></div>
+        <div class="cup-brush" style="--b-color:#f1c40f; --b-rot:8deg; --b-left:45%"></div>
+        <div class="cup-brush" style="--b-color:#9b59b6; --b-rot:-3deg; --b-left:70%"></div>
+    </div>
+    <div class="brush-cup brush-cup-3">
+        <div class="cup-brush" style="--b-color:#e67e22; --b-rot:5deg; --b-left:20%"></div>
+        <div class="cup-brush" style="--b-color:#e74c3c; --b-rot:-7deg; --b-left:60%"></div>
+    </div>
+    <div class="brush-cup brush-cup-4">
+        <div class="cup-brush" style="--b-color:#3498db; --b-rot:4deg; --b-left:15%"></div>
+        <div class="cup-brush" style="--b-color:#2ecc71; --b-rot:-6deg; --b-left:55%"></div>
+    </div>
+    <div class="brush-cup brush-cup-5">
+        <div class="cup-brush" style="--b-color:#f1c40f; --b-rot:-4deg; --b-left:10%"></div>
+        <div class="cup-brush" style="--b-color:#e67e22; --b-rot:7deg; --b-left:45%"></div>
+        <div class="cup-brush" style="--b-color:#9b59b6; --b-rot:0deg; --b-left:75%"></div>
+    </div>
 
     <!-- Osterhase -->
     <div class="bunny-container" role="img" aria-label="Osterhase – klicke auf den Kopf!">
@@ -81,21 +103,30 @@
             <!-- Körper -->
             <ellipse cx="100" cy="230" rx="55" ry="75" fill="#8B6C42"/>
 
-            <!-- Schürze -->
-            <rect x="60" y="180" width="80" height="100" rx="6" fill="#F5F0E1" opacity="0.95"/>
-            <rect x="75" y="170" width="50" height="16" rx="4" fill="#F5F0E1" opacity="0.95"/>
-
+            <!-- Schürze – Nackenband -->
+            <path d="M75,170 Q100,160 125,170" fill="none" stroke="#D4C5A0" stroke-width="3" stroke-linecap="round"/>
+            <!-- Schürze – Brustlatz -->
+            <path d="M72,172 L66,198 L134,198 L128,172 Q100,163 72,172Z" fill="#F5F0E1" stroke="#E8DCC8" stroke-width="0.8"/>
+            <!-- Schürze – Hauptteil -->
+            <path d="M56,198 L60,282 Q100,290 140,282 L144,198Z" fill="#F5F0E1" stroke="#E8DCC8" stroke-width="0.8"/>
+            <!-- Schürze – Taillenband -->
+            <path d="M56,198 L144,198" fill="none" stroke="#D4C5A0" stroke-width="3"/>
+            <!-- Schürze – Seitenbänder -->
+            <path d="M56,198 Q42,196 38,201" fill="none" stroke="#D4C5A0" stroke-width="3" stroke-linecap="round"/>
+            <path d="M144,198 Q158,196 162,201" fill="none" stroke="#D4C5A0" stroke-width="3" stroke-linecap="round"/>
+            <!-- Schürze – Schleife -->
+            <path d="M38,201 Q30,206 28,198 Q27,192 33,194" fill="none" stroke="#D4C5A0" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M162,201 Q170,206 172,198 Q173,192 167,194" fill="none" stroke="#D4C5A0" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Schürze – Tasche -->
+            <path d="M78,232 L78,264 Q100,270 122,264 L122,232Z" fill="#EDE5D0" stroke="#D4C5A0" stroke-width="0.8"/>
+            <line x1="100" y1="232" x2="100" y2="266" stroke="#D4C5A0" stroke-width="0.5"/>
             <!-- Farbkleckse auf Schürze -->
-            <circle cx="80"  cy="210" r="7"  fill="#e74c3c" opacity="0.85"/>
-            <circle cx="105" cy="198" r="5"  fill="#3498db" opacity="0.85"/>
-            <circle cx="120" cy="225" r="8"  fill="#f1c40f" opacity="0.85"/>
-            <circle cx="90"  cy="245" r="6"  fill="#2ecc71" opacity="0.85"/>
-            <circle cx="115" cy="255" r="5"  fill="#9b59b6" opacity="0.85"/>
-            <circle cx="75"  cy="265" r="4"  fill="#e67e22" opacity="0.85"/>
-
-            <!-- Schürzen-Band -->
-            <path d="M60,195 Q50,195 48,200 L48,197" fill="none" stroke="#D4C5A0" stroke-width="3"/>
-            <path d="M140,195 Q150,195 152,200 L152,197" fill="none" stroke="#D4C5A0" stroke-width="3"/>
+            <circle cx="82"  cy="212" r="6"  fill="#e74c3c" opacity="0.8"/>
+            <circle cx="118" cy="210" r="5"  fill="#3498db" opacity="0.8"/>
+            <circle cx="132" cy="248" r="7"  fill="#f1c40f" opacity="0.75"/>
+            <circle cx="85"  cy="252" r="5"  fill="#2ecc71" opacity="0.8"/>
+            <circle cx="115" cy="275" r="4"  fill="#9b59b6" opacity="0.7"/>
+            <circle cx="68"  cy="270" r="4"  fill="#e67e22" opacity="0.7"/>
 
             <!-- Arme -->
             <ellipse cx="50" cy="220" rx="18" ry="12" fill="#8B6C42" transform="rotate(-20, 50, 220)"/>
@@ -106,12 +137,18 @@
             <ellipse cx="162" cy="215" rx="9" ry="7" fill="#A07850"/>
 
             <!-- Beine -->
-            <ellipse cx="78" cy="315" rx="22" ry="14" fill="#8B6C42"/>
-            <ellipse cx="122" cy="315" rx="22" ry="14" fill="#8B6C42"/>
+            <ellipse cx="78" cy="312" rx="22" ry="16" fill="#8B6C42"/>
+            <ellipse cx="122" cy="312" rx="22" ry="16" fill="#8B6C42"/>
 
-            <!-- Füße -->
-            <ellipse cx="72" cy="330" rx="25" ry="12" fill="#A07850"/>
-            <ellipse cx="128" cy="330" rx="25" ry="12" fill="#A07850"/>
+            <!-- Füße (realistisch) -->
+            <path d="M45,330 Q50,318 72,316 Q94,318 99,330 Q100,340 92,346 Q82,352 72,352 Q62,352 52,346 Q44,340 45,330Z" fill="#A07850"/>
+            <ellipse cx="58" cy="342" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
+            <ellipse cx="72" cy="344" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
+            <ellipse cx="86" cy="342" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
+            <path d="M101,330 Q106,318 128,316 Q150,318 155,330 Q156,340 148,346 Q138,352 128,352 Q118,352 108,346 Q100,340 101,330Z" fill="#A07850"/>
+            <ellipse cx="114" cy="342" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
+            <ellipse cx="128" cy="344" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
+            <ellipse cx="142" cy="342" rx="7" ry="4" fill="#C4A880" opacity="0.5"/>
 
             <!-- Bauchfell -->
             <ellipse cx="100" cy="240" rx="28" ry="35" fill="#C4A672" opacity="0.4"/>

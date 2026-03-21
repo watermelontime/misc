@@ -16,6 +16,12 @@
 
 <div class="game-scene">
 
+    <!-- Wolken -->
+    <div class="cloud" style="--cw:100px; --cloud-speed:45s; top:6%;"><span></span></div>
+    <div class="cloud" style="--cw:70px; --cloud-speed:60s; top:14%; animation-delay:-20s;"><span></span></div>
+    <div class="cloud" style="--cw:120px; --cloud-speed:55s; top:3%; animation-delay:-35s;"><span></span></div>
+    <div class="cloud" style="--cw:80px; --cloud-speed:50s; top:22%; animation-delay:-10s;"><span></span></div>
+
     <!-- HUD -->
     <div class="hud">
         <div class="score-display">&#129370; Eier: <span id="score-value">0</span></div>
@@ -35,7 +41,7 @@
 
     <!-- Spieler-Hase mit Korb -->
     <div class="player-bunny">
-        <svg viewBox="0 0 110 160" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 110 185" xmlns="http://www.w3.org/2000/svg">
             <!-- Korb -->
             <ellipse cx="55" cy="60" rx="42" ry="22" fill="#D2A54C"/>
             <ellipse cx="55" cy="52" rx="40" ry="8" fill="#C49332" />
@@ -78,6 +84,14 @@
             <!-- Pfoten links / rechts (halten den Korb) -->
             <ellipse cx="18" cy="68" rx="8" ry="6" fill="#A07850"/>
             <ellipse cx="92" cy="68" rx="8" ry="6" fill="#A07850"/>
+
+            <!-- Beine -->
+            <ellipse cx="43" cy="158" rx="10" ry="7" fill="#8B6C42"/>
+            <ellipse cx="67" cy="158" rx="10" ry="7" fill="#8B6C42"/>
+
+            <!-- Füße -->
+            <ellipse cx="40" cy="166" rx="14" ry="6" fill="#A07850"/>
+            <ellipse cx="70" cy="166" rx="14" ry="6" fill="#A07850"/>
 
             <!-- Bauchfell -->
             <ellipse cx="55" cy="145" rx="13" ry="11" fill="#C4A672" opacity="0.45"/>

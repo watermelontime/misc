@@ -9,8 +9,8 @@
     position: relative;
     background: linear-gradient(180deg,
         #87CEEB 0%,
-        #b3e0f2 55%,
-        #90c95c 55%,
+        #b3e0f2 69%,
+        #90c95c 69%,
         #6aad3a 100%);
     overflow: hidden;
 }
@@ -69,7 +69,7 @@
     border-radius: 1px;
 }
 
-/* Pinsel-Haare */
+/* Pinsel-Haare (Wassertropfen-Form wie Titelseite) */
 .life-brush .bristles {
     position: absolute;
     top: 0;
@@ -77,7 +77,7 @@
     width: 12px;
     height: 18px;
     background: #e74c3c;
-    border-radius: 4px 4px 2px 2px;
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
 }
 
 /* --- Start-Overlay --- */
@@ -110,7 +110,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-bottom: 14px;
     z-index: 70;
     background: rgba(0,0,0,0.55);
 }
@@ -139,7 +140,7 @@
 /* --- Meilenstein-Buttons (Weiter / Neu) --- */
 .milestone-buttons {
     position: fixed;
-    top: 10px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -182,8 +183,8 @@
 .player-bunny {
     position: absolute;
     bottom: 2%;
-    width: clamp(70px, 12vw, 110px);
-    height: clamp(100px, 18vw, 160px);
+    width: clamp(158px, 27vw, 248px);
+    height: clamp(225px, 41vw, 360px);
     z-index: 30;
     transition: left 0.08s linear;
 }
@@ -198,7 +199,7 @@
     position: absolute;
     bottom: 8px;
     left: 8px;
-    z-index: 50;
+    z-index: 120;
     padding: 6px 14px;
     font-size: 0.85rem;
     background: rgba(255,255,255,0.7);
@@ -210,4 +211,47 @@
 }
 .back-button:hover {
     background: rgba(255,255,255,0.95);
+}
+
+/* --- Wolken --- */
+@keyframes cloud-drift {
+    from { transform: translateX(100vw); }
+    to   { transform: translateX(-300px); }
+}
+
+.cloud {
+    position: absolute;
+    z-index: 2;
+    opacity: 0.85;
+    pointer-events: none;
+    animation: cloud-drift var(--cloud-speed, 40s) linear infinite;
+}
+
+.cloud::before,
+.cloud::after,
+.cloud span {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: var(--cw, 90px);
+    height: calc(var(--cw, 90px) * 0.5);
+    bottom: 0;
+    left: 0;
+}
+.cloud::after {
+    width: calc(var(--cw, 90px) * 0.55);
+    height: calc(var(--cw, 90px) * 0.55);
+    bottom: 25%;
+    left: 18%;
+}
+.cloud span {
+    display: block;
+    width: calc(var(--cw, 90px) * 0.4);
+    height: calc(var(--cw, 90px) * 0.4);
+    bottom: 20%;
+    left: 55%;
 }

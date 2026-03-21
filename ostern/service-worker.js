@@ -2,7 +2,7 @@
    service-worker.js – Cache-first für Offline-Fähigkeit
    ============================================================ */
 
-const CACHE_NAME = 'ostern-2026-v1';
+const CACHE_NAME = 'ostern-2026-v6';
 const ASSETS = [
     './',
     'index.html',
