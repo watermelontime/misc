@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur's PWA: Main Page</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+	<link rel="stylesheet" href="styles.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS spezifische Meta-Tags -->
+    <link rel="apple-touch-icon" href="images/icon-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="Toffee PWA">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Optionen: default (hell), black, black-translucent (dunkel und halb-transparent). -->
+	
+    <!-- Weitere Meta-Tags für andere Geräte -->
+    <meta name="theme-color" content="#4CAF50">
+</head>
+
+<body>
+	<script src="menue.js"></script>
+
+    <h1>Arthur's PWA: Main Page</h1>
+    
+    <div>
+	Select subpage via menue.
+	</div>
+
+    <div class="menue-group">
+		<button onclick="goToPage('qr/index.html')">QR-Code Generator</button>
+		<button onclick="goToPage('qrscan2/index.html')">QR-Code Scanner ZXing.js</button>
+		<button onclick="goToPage('demo/index.html')">Sensor Demo</button>
+        <button onclick="goToPage('test/index.html')">Test</button>
+        <button onclick="goToPage('ostern/index.html')">&#127873; Ostern 2026</button>
+	</div>
+
+</body>
+</html>

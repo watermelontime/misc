@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Mobile Sensors + Camera Demo</title>
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./images/logo.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="./images/logo.svg" alt="Logo" aria-hidden="true" />
+      <div>
+        <h1>Mobile Sensors + Camera</h1>
+        <p class="subtitle">PWA demo (optimized for iOS)</p>
+      </div>
+    </div>
+    <button id="installBtn" class="btn btn-secondary" hidden>Install App</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Permissions</h2>
+      <p>Enable features with explicit user gestures for iOS.</p>
+      <div class="actions">
+        <button id="enableMotionBtn" class="btn">Enable Motion & Orientation</button>
+        <button id="enableGeoBtn" class="btn">Enable Geolocation</button>
+        <button id="enableCameraBtn" class="btn">Enable Camera & Scanner</button>
+      </div>
+      <p id="permissionsStatus" class="muted"></p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Geolocation</h3>
+        <div class="kv">
+          <div>
+            <span class="key">Latitude</span>
+            <span class="val" id="geoLat">–</span>
+          </div>
+          <div>
+            <span class="key">Longitude</span>
+            <span class="val" id="geoLon">–</span>
+          </div>
+          <div>
+            <span class="key">Accuracy (m)</span>
+            <span class="val" id="geoAcc">–</span>
+          </div>
+          <div>
+            <span class="key">Speed (m/s)</span>
+            <span class="val" id="geoSpd">–</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="stopGeoBtn" class="btn btn-secondary">Stop Geolocation</button>
+        </div>
+        <p id="geoStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Device Orientation</h3>
+        <div class="kv">
+          <div><span class="key">Alpha</span><span class="val" id="oriAlpha">–</span></div>
+          <div><span class="key">Beta</span><span class="val" id="oriBeta">–</span></div>
+          <div><span class="key">Gamma</span><span class="val" id="oriGamma">–</span></div>
+        </div>
+        <p id="oriStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Device Motion</h3>
+        <div class="kv">
+          <div><span class="key">Accel X</span><span class="val" id="motAx">–</span></div>
+          <div><span class="key">Accel Y</span><span class="val" id="motAy">–</span></div>
+          <div><span class="key">Accel Z</span><span class="val" id="motAz">–</span></div>
+          <div><span class="key">Rot α</span><span class="val" id="motRa">–</span></div>
+          <div><span class="key">Rot β</span><span class="val" id="motRb">–</span></div>
+          <div><span class="key">Rot γ</span><span class="val" id="motRg">–</span></div>
+        </div>
+        <p id="motStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Battery</h3>
+        <div class="kv">
+          <div><span class="key">Level</span><span class="val" id="batLevel">–</span></div>
+          <div><span class="key">Charging</span><span class="val" id="batCharging">–</span></div>
+        </div>
+        <p id="batStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Ambient Light</h3>
+        <div class="kv">
+          <div><span class="key">Illuminance (lux)</span><span class="val" id="lightLux">–</span></div>
+        </div>
+        <p id="lightStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Accelerometer</h3>
+        <div class="kv">
+          <div><span class="key">X</span><span class="val" id="accX">–</span></div>
+          <div><span class="key">Y</span><span class="val" id="accY">–</span></div>
+          <div><span class="key">Z</span><span class="val" id="accZ">–</span></div>
+        </div>
+        <p id="accStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Gyroscope</h3>
+        <div class="kv">
+          <div><span class="key">X</span><span class="val" id="gyroX">–</span></div>
+          <div><span class="key">Y</span><span class="val" id="gyroY">–</span></div>
+          <div><span class="key">Z</span><span class="val" id="gyroZ">–</span></div>
+        </div>
+        <p id="gyroStatus" class="muted"></p>
+      </article>
+
+      <article class="card">
+        <h3>Magnetometer</h3>
+        <div class="kv">
+          <div><span class="key">X</span><span class="val" id="magX">–</span></div>
+          <div><span class="key">Y</span><span class="val" id="magY">–</span></div>
+          <div><span class="key">Z</span><span class="val" id="magZ">–</span></div>
+        </div>
+        <p id="magStatus" class="muted"></p>
+      </article>
+
+      <article class="card wide">
+        <h3>Camera & Barcode Scanner</h3>
+        <div class="video-wrap">
+          <video id="video" playsinline autoplay muted></video>
+          <canvas id="canvas" class="hidden"></canvas>
+        </div>
+        <div class="actions">
+          <button id="scanBtn" class="btn" disabled>Start Scanning</button>
+          <button id="stopScanBtn" class="btn btn-secondary" disabled>Stop Scanning</button>
+          <button id="torchBtn" class="btn btn-secondary" disabled>Toggle Torch</button>
+        </div>
+        <div class="kv">
+          <div><span class="key">Last Code</span><span class="val" id="scanResult">–</span></div>
+          <div><span class="key">Format</span><span class="val" id="scanFormat">–</span></div>
+        </div>
+        <p id="scanStatus" class="muted"></p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Network Info</h2>
+      <div class="kv">
+        <div><span class="key">Type</span><span class="val" id="netType">–</span></div>
+        <div><span class="key">Downlink (Mbps)</span><span class="val" id="netDown">–</span></div>
+        <div><span class="key">RTT (ms)</span><span class="val" id="netRtt">–</span></div>
+      </div>
+      <p id="netStatus" class="muted"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>This demo uses feature detection and graceful fallbacks. Availability varies on iOS.</p>
+  </footer>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

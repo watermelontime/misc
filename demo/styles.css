@@ -1,0 +1,69 @@
+/* Modern mobile-first styles */
+:root {
+  --bg: #0b1220;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22d3ee;
+  --accent-2: #a78bfa;
+  --border: #1f2937;
+}
+* { box-sizing: border-box }
+html, body { height: 100% }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: linear-gradient(180deg, #0b1220, #0e1726 60%, #0b1220);
+  color: var(--text);
+}
+img { display: block }
+.hidden { display: none }
+.muted { color: var(--muted); font-size: .9rem }
+
+.app-header {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: rgba(11,18,32,.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; gap: 12px; align-items: center }
+.brand img { width: 36px; height: 36px }
+.brand h1 { margin: 0; font-size: 1.25rem }
+.subtitle { margin: 2px 0 0; font-size: .9rem; color: var(--muted) }
+
+.container { max-width: 960px; margin: 16px auto; padding: 0 12px }
+.grid { display: grid; gap: 12px; grid-template-columns: 1fr }
+@media (min-width: 720px) { .grid { grid-template-columns: repeat(2, 1fr) } }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.card.wide { grid-column: 1 / -1 }
+.card h2, .card h3 { margin: 0 0 10px; font-weight: 600 }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center }
+.kv .key { color: var(--muted) }
+.kv .val { font-weight: 600 }
+
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px }
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #0b1220; border: none; border-radius: 10px; padding: 10px 12px;
+  font-weight: 700; cursor: pointer; box-shadow: 0 6px 14px rgba(32, 212, 238, .35);
+}
+.btn:hover { filter: brightness(1.05) }
+.btn:disabled { opacity: .6; cursor: not-allowed }
+.btn-secondary { background: #0f172a; color: var(--text); border: 1px solid var(--border) }
+
+.video-wrap { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--border) }
+#video { width: 100%; height: auto; background: #000 }
+.footer { text-align: center; color: var(--muted); padding: 24px }
+
+/* Safe areas for iOS notch */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body { padding-bottom: env(safe-area-inset-bottom) }
+}
