@@ -1,0 +1,407 @@
+/* ============================================================
+   styles.css – Mensch ärgere Dich nicht
+   ============================================================ */
+
+/* ── Reset & Grundlagen ───────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #3E2723;
+  color: #FFF;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Status-Leiste ────────────────────────────────────────── */
+
+#status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #4E342E;
+  border-bottom: 2px solid #6D4C41;
+  min-height: 48px;
+  flex-shrink: 0;
+}
+
+#current-player-indicator {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFF;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  min-width: 60px;
+  text-align: center;
+}
+
+#status-text {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#dice-value-wrap {
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ── Game Area ────────────────────────────────────────────── */
+
+#game-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: calc(100dvh - 48px);
+  padding: 12px;
+  overflow: hidden;
+}
+
+#board-wrapper {
+  position: relative;
+  /* Quadratisch, füllt die kleinere Dimension */
+  width: min(calc(100dvh - 72px), calc(100vw - 170px));
+  height: min(calc(100dvh - 72px), calc(100vw - 170px));
+  flex-shrink: 0;
+}
+
+#board-container {
+  width: 100%;
+  height: 100%;
+}
+
+.board-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+}
+
+/* ── Würfel-Container (Overlay über SVG-Mitte) ────────────── */
+
+#dice-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* ── 3D-Würfel (skaliert mit Board via --dice-px) ─────────── */
+
+.dice-wrap {
+  --dice-color: #FAFAFA;
+  --dice-px: 50px;          /* wird per JS gesetzt */
+  --dice-half: calc(var(--dice-px) / 2);
+  width: var(--dice-px);
+  height: var(--dice-px);
+  cursor: default;
+}
+
+.dice-wrap.dice-pulse {
+  animation: diceBounce 1.2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes diceBounce {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.12); }
+}
+
+.dice-scene {
+  width: var(--dice-px);
+  height: var(--dice-px);
+  perspective: calc(var(--dice-px) * 5);
+}
+
+.dice-cube {
+  width: var(--dice-px);
+  height: var(--dice-px);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.dice-face {
+  position: absolute;
+  width: var(--dice-px);
+  height: var(--dice-px);
+  background: var(--dice-color);
+  border: none;
+  border-radius: calc(var(--dice-px) * 0.13);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "a1 a2 a3"
+    "b1 b2 b3"
+    "c1 c2 c3";
+  padding: calc(var(--dice-px) * 0.1);
+  gap: calc(var(--dice-px) * 0.03);
+}
+
+.dice-dot {
+  width: calc(var(--dice-px) * 0.16);
+  height: calc(var(--dice-px) * 0.16);
+  background: #FFF;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+}
+
+/* Positionierung der 6 Seiten */
+.dice-face-1 { transform: rotateY(0deg)   translateZ(var(--dice-half)); }
+.dice-face-6 { transform: rotateY(180deg) translateZ(var(--dice-half)); }
+.dice-face-3 { transform: rotateY(-90deg) translateZ(var(--dice-half)); }
+.dice-face-4 { transform: rotateY(90deg)  translateZ(var(--dice-half)); }
+.dice-face-2 { transform: rotateX(90deg)  translateZ(var(--dice-half)); }
+.dice-face-5 { transform: rotateX(-90deg) translateZ(var(--dice-half)); }
+
+/* ── Figuren ──────────────────────────────────────────────── */
+
+.figure {
+  transition: opacity 0.3s;
+}
+
+.figure.highlight {
+  animation: figPulse 0.8s ease-in-out infinite;
+  cursor: pointer !important;
+}
+
+@keyframes figPulse {
+  0%, 100% { filter: drop-shadow(0 0 0px #FFF); }
+  50%      { filter: drop-shadow(0 0 10px #FFF) drop-shadow(0 0 4px #FFF); }
+}
+
+/* ── Spieler-Info ─────────────────────────────────────────── */
+
+#player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 120px;
+  padding-top: 8px;
+}
+
+.player-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  opacity: 0.6;
+  transition: opacity 0.3s, background 0.3s;
+}
+
+.player-info-item.active {
+  opacity: 1;
+  background: rgba(255,255,255,0.14);
+}
+
+.player-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.player-name {
+  font-weight: 600;
+  font-size: 14px;
+  flex: 1;
+}
+
+.player-progress {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ── Overlays ─────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 15, 10, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.4s;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 40px 32px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.overlay-content h1 {
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #E53935, #FDD835, #43A047, #1E88E5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #BCAAA4;
+}
+
+.player-count-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.player-count-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #6D4C41;
+  background: #4E342E;
+  color: #FFF;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.player-count-btn:hover {
+  border-color: #BCAAA4;
+  background: #5D4037;
+}
+
+.player-count-btn.selected {
+  border-color: #FDD835;
+  background: #6D4C41;
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(253, 216, 53, 0.4);
+}
+
+#start-btn,
+#new-game-btn {
+  padding: 12px 36px;
+  border: none;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #E53935, #D32F2F);
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#start-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#start-btn:not(:disabled):hover,
+#new-game-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.5);
+}
+
+/* ── Konfetti ─────────────────────────────────────────────── */
+
+#confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 101;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  #game-area {
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  #board-wrapper {
+    width: min(calc(100dvh - 140px), calc(100vw - 16px));
+    height: min(calc(100dvh - 140px), calc(100vw - 16px));
+  }
+
+  #player-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: unset;
+    padding-top: 0;
+  }
+
+  .player-info-item {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  #status-bar {
+    padding: 6px 12px;
+    gap: 8px;
+    min-height: 40px;
+  }
+
+  #status-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-content {
+    padding: 24px 16px;
+  }
+
+  .overlay-content h1 {
+    font-size: 28px;
+  }
+}

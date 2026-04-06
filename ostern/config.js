@@ -9,7 +9,7 @@ const CONFIG = {
     // Zeile 1: bunt, Zeile 2: leuchtend weiß
     // ----------------------------------------------------------
     titleLine1: "Frohe Ostern",
-    titleLine2: "wuenscht Noemi",
+    titleLine2: "wünscht Noemi",
 
     // ----------------------------------------------------------
     // Meilenstein-Texte

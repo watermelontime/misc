@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#5D4037">
+  <title>Mensch ärgere Dich nicht</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+  <!-- ── Status-Leiste ──────────────────────────────────── -->
+  <header id="status-bar">
+    <div id="current-player-indicator">-</div>
+    <div id="status-text">Wähle die Spieleranzahl</div>
+    <div id="dice-value-wrap">🎲 <span id="dice-value">-</span></div>
+  </header>
+
+  <!-- ── Spielfeld ──────────────────────────────────────── -->
+  <main id="game-area">
+    <div id="board-wrapper">
+      <div id="board-container"></div>
+      <div id="dice-container"></div>
+    </div>
+    <aside id="player-info"></aside>
+  </main>
+
+  <!-- ── Setup-Overlay ──────────────────────────────────── -->
+  <div id="setup-overlay" class="overlay">
+    <div class="overlay-content">
+      <h1>Mensch ärgere<br>Dich nicht!</h1>
+      <p>Wie viele Spieler?</p>
+      <div class="player-count-buttons">
+        <button class="player-count-btn" data-count="2">2</button>
+        <button class="player-count-btn" data-count="3">3</button>
+        <button class="player-count-btn" data-count="4">4</button>
+      </div>
+      <button id="start-btn" disabled>Spiel starten</button>
+    </div>
+  </div>
+
+  <!-- ── GameOver-Overlay ───────────────────────────────── -->
+  <div id="gameover-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <div id="confetti-container"></div>
+      <h1>🎉 Gewonnen!</h1>
+      <p><span id="winner-name"></span> hat gewonnen!</p>
+      <button id="new-game-btn">Neues Spiel</button>
+    </div>
+  </div>
+
+  <!-- ── Scripts ────────────────────────────────────────── -->
+  <script src="config.js"></script>
+  <script src="board.js"></script>
+  <script src="dice.js"></script>
+  <script src="spiel.js"></script>
+
+</body>
+</html>

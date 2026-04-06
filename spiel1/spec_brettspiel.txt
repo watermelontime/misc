@@ -1,0 +1,10 @@
+Ich will ein Brettspiel erstellen: Mensch ärger dich nicht.
+Das Spiel soll 4 spieler unterstützen.
+Die Spielerzahl soll wählbar sein.
+Das Würfeln soll in der mitte des Feldes erfolgen.
+Dazu sollen ein Würfel animiert werden, wie es sich dreht.
+Beim Klick/Tipp auf die Würfel wird der Würfelvorgang gestartet.
+Mit welcher Figur der Zug ausgeführt werden soll, wählt der Spieler per Klick auf die Figur.
+Die Regeln für das Spiel, hole dir bitte aus dem Internet.
+Nutze nur Java-Script und HTML.
+Erstelle eine Spezifikation für das Spiel.

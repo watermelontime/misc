@@ -1,0 +1,37 @@
+End-User License Agreement for all JavaScript code on Arthur's Website
+
+This End-User License Agreement ("Agreement") is a legally binding contract between you, the individual or entity agreeing to these terms ("Licensee"), and [Your Company Name] ("Licensor").
+
+Proprietary Software Notice: This is a commercial, proprietary, non-free software license agreement. This Software is not open source. Your right to access or use the Software is strictly limited by the terms of this Agreement.
+
+By downloading, installing, accessing, or otherwise using the software product identified above, including its source code ("Software"), you agree to be bound by the terms of this Agreement. If you do not agree to the terms of this Agreement, do not download, install, or use the Software.
+
+1. Grant of License
+Subject to the terms, conditions, and restrictions of this Agreement, Licensor grants to Licensee a limited, non-exclusive, non-transferable, non-sublicensable, and revocable license to view the source code of the Software solely for internal, non-commercial, and personal evaluation purposes. No other rights are granted, and all other uses are strictly prohibited.
+
+2. Restrictions
+Licensee shall not, and shall not permit any third party to, perform any of the following actions:
+a) Modify, adapt, translate, or create derivative works from the Software.
+b) Decompile, reverse engineer, disassemble, or otherwise attempt to derive the source code from any compiled object code of the Software.
+c) Sell, rent, lease, sublicense, assign, distribute, publish, transfer, or otherwise make the Software available to any third party for any reason.
+d) Use the Software for any commercial purpose, in any production environment, or for the benefit of any third party.
+e) Remove or alter any proprietary notices, labels, or marks on the Software.
+f) Use the Software in any manner that violates any applicable law or regulation.
+
+3. Intellectual Property Ownership
+The Software is licensed, not sold. Licensor and its suppliers retain all right, title, and interest in and to the Software and all copies thereof, including all copyrights, patents, patent applications, trade secrets, trademarks, and other intellectual property rights therein. This Agreement does not transfer any ownership rights to the Licensee.
+
+4. No Grant of Patent Rights
+No rights or licenses are granted, express or implied, to any patents, patent applications, trade secrets, or other intellectual property of Licensor or its suppliers, except as expressly provided in this Agreement. For the avoidance of doubt, this Agreement does not grant any right or license under any of Licensor's patents. Licensee agrees not to assert any patent rights against Licensor or its other licensees based on the Software.
+
+5. Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL LICENSOR OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7. Termination
+This Agreement is effective until terminated. This Agreement will terminate automatically, without notice from the Licensor, if Licensee fails to comply with any of its terms or conditions. Upon termination, Licensee must immediately cease all use of the Software and destroy all copies of the Software and its source code in its possession or control.
+
+8. Governing Law
+This Agreement shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law principles.
