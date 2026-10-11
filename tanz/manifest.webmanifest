@@ -1,0 +1,19 @@
+{
+  "name": "MyDanceMusicPlayer",
+  "short_name": "DanceMusic",
+  "description": "Spielt passende YouTube-Songs für jeden Tanz (ChaCha, Rumba, Samba …).",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0821",
+  "theme_color": "#ff3ca6",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

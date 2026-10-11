@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff3ca6" />
+  <title>MyDanceMusicPlayer</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Kopfzeile -->
+  <header class="app-header">
+    <button id="backBtn" class="icon-btn hidden" aria-label="Zurück">‹</button>
+    <h1 id="appTitle">MyDanceMusicPlayer</h1>
+    <button id="themeBtn" class="icon-btn" aria-label="Design umschalten">☀️</button>
+  </header>
+
+  <main id="main">
+    <!-- Ansicht: Tanz-Übersicht -->
+    <section id="view-dances" class="view">
+      <ul id="danceList" class="dance-grid"></ul>
+    </section>
+
+    <!-- Ansicht: Songliste eines Tanzes -->
+    <section id="view-songs" class="view hidden">
+      <h2 id="danceTitle" class="view-title"></h2>
+      <ul id="songList" class="song-list"></ul>
+
+      <form id="addSongForm" class="add-form">
+        <h3>Eigenen Song hinzufügen</h3>
+        <input type="text" id="songUrl" placeholder="YouTube-Link oder Video-ID" required />
+        <input type="text" id="songTitle" placeholder="Titel (optional)" />
+        <button type="submit" class="btn">Hinzufügen</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Player-Leiste -->
+  <div id="playerBar" class="player-bar hidden">
+    <div class="track-info">
+      <span id="trackTitle" class="track-title">–</span>
+      <span id="trackArtist" class="track-artist"></span>
+    </div>
+
+    <div class="progress-row">
+      <span id="curTime" class="time">0:00</span>
+      <input type="range" id="seek" class="seek" min="0" max="100" value="0" step="1" />
+      <span id="durTime" class="time">0:00</span>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn" class="ctrl-btn" aria-label="Vorheriger">⏮</button>
+      <button id="playBtn" class="ctrl-btn play" aria-label="Abspielen/Pause">▶</button>
+      <button id="nextBtn" class="ctrl-btn" aria-label="Nächster">⏭</button>
+    </div>
+
+    <div class="options-row">
+      <label class="toggle">
+        <input type="checkbox" id="autoplayToggle" checked />
+        <span>Autoplay</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="loopToggle" />
+        <span>🔁 Loop</span>
+      </label>
+      <div class="volume">
+        <span>🔊</span>
+        <input type="range" id="volume" min="0" max="100" value="100" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Versteckter YouTube-Player (nur Ton) -->
+  <div id="yt-hidden"><div id="player"></div></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
