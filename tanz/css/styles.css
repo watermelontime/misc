@@ -42,9 +42,11 @@ body {
     radial-gradient(1000px 500px at 100% 10%, rgba(255, 60, 166, 0.3), transparent 60%),
     linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
   background-attachment: fixed;
-  padding-bottom: 220px; /* Platz für Player-Leiste */
+  padding-bottom: 24px;
   -webkit-tap-highlight-color: transparent;
 }
+/* Platz für die Player-Leiste nur, wenn sie sichtbar ist */
+body.player-active { padding-bottom: 220px; }
 
 /* ---------- Header ---------- */
 .app-header {
@@ -92,6 +94,13 @@ body.light .app-header {
 .icon-btn:active { transform: scale(0.92); }
 #backBtn { font-size: 1.8rem; line-height: 1; }
 
+#displayBtn { font-size: 1.2rem; opacity: 0.55; }
+#displayBtn.active {
+  opacity: 1;
+  background: var(--cyan);
+  color: #04131a;
+}
+
 /* ---------- Views ---------- */
 .view { padding: 16px; max-width: 640px; margin: 0 auto; }
 .hidden { display: none !important; }
@@ -108,7 +117,7 @@ body.light .app-header {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 
@@ -116,9 +125,8 @@ body.light .app-header {
   position: relative;
   border: none;
   width: 100%;
-  min-height: 108px;
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 12px 14px;
   text-align: left;
   color: #fff;
   font-size: 1.15rem;
@@ -127,12 +135,24 @@ body.light .app-header {
   box-shadow: var(--shadow);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   transition: transform 0.12s ease;
 }
 .dance-card:active { transform: scale(0.96); }
 
+.dance-card .meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.dance-card .name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .dance-card .count {
   font-size: 0.8rem;
   font-weight: 600;
@@ -140,7 +160,7 @@ body.light .app-header {
 }
 .dance-card .emoji {
   font-size: 1.6rem;
-  align-self: flex-end;
+  flex-shrink: 0;
 }
 
 /* bunte Rotation der Kacheln */
@@ -207,6 +227,52 @@ body.light .app-header {
   place-items: center;
 }
 .song-item .del-btn { color: var(--pink); }
+
+.song-item .loop-btn {
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.song-item .loop-btn.active {
+  background: var(--cyan);
+  color: #04131a;
+}
+
+/* ---------- iOS-Hinweis ---------- */
+.ios-hint {
+  position: relative;
+  background: linear-gradient(120deg, rgba(255,60,166,0.18), rgba(0,229,255,0.18));
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 40px 16px 16px;
+  margin-bottom: 18px;
+}
+.ios-hint strong { display: block; font-size: 1rem; margin-bottom: 6px; }
+.ios-hint p { margin: 0 0 8px; color: var(--muted); }
+.ios-hint ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.ios-hint a { color: var(--cyan); }
+.ios-hint-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
 
 /* ---------- Add-Form ---------- */
 .add-form {
@@ -354,5 +420,5 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @media (min-width: 420px) {
-  .dance-grid { grid-template-columns: repeat(2, 1fr); }
+  .dance-grid { grid-template-columns: 1fr; }
 }

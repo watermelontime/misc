@@ -11,6 +11,7 @@
     danceTitle: el("danceTitle"),
     backBtn: el("backBtn"),
     themeBtn: el("themeBtn"),
+    displayBtn: el("displayBtn"),
     addForm: el("addSongForm"),
     songUrl: el("songUrl"),
     songTitle: el("songTitle"),
@@ -26,6 +27,8 @@
     volume: el("volume"),
     autoplayToggle: el("autoplayToggle"),
     loopToggle: el("loopToggle"),
+    iosHint: el("iosHint"),
+    iosHintClose: el("iosHintClose"),
   };
 
   // Zustand
@@ -35,6 +38,7 @@
     index: -1,
     seeking: false,
     duration: 0,
+    loopSongs: new Set(),
   };
 
   const THEME_KEY = "mydancemusic.theme";
@@ -74,8 +78,10 @@
       btn.className = "dance-card";
       btn.innerHTML = `
         <span class="emoji">${d.emoji}</span>
-        <span class="name">${d.name}</span>
-        <span class="count">${Store.countSongs(d.key)} Songs</span>`;
+        <span class="meta">
+          <span class="name">${d.name}</span>
+          <span class="count">${Store.countSongs(d.key)} Songs</span>
+        </span>`;
       btn.addEventListener("click", () => showSongs(d.key));
       li.appendChild(btn);
       ui.danceList.appendChild(li);
@@ -100,18 +106,28 @@
       if (state.danceKey === state.playingDance && i === state.index) li.classList.add("playing");
 
       const search = encodeURIComponent(`${song.title} ${song.artist || ""}`);
+      const looping = state.loopSongs.has(song.id);
       li.innerHTML = `
         <span class="play-dot">♪</span>
         <span class="meta">
           <span class="s-title">${escapeHtml(song.title)}</span>
           <span class="s-artist">${escapeHtml(song.artist || "")}</span>
         </span>
+        <button class="loop-btn${looping ? " active" : ""}" title="Lied wiederholen"
+           aria-label="Lied wiederholen" aria-pressed="${looping}">🔂</button>
         <a class="yt-link" href="https://www.youtube.com/results?search_query=${search}"
            target="_blank" rel="noopener" title="Auf YouTube suchen" aria-label="Auf YouTube suchen">🔎</a>
         ${song.custom ? '<button class="del-btn" title="Entfernen" aria-label="Entfernen">🗑</button>' : ""}`;
 
       li.querySelector(".meta").addEventListener("click", () => playQueueAt(songs, i));
       li.querySelector(".play-dot").addEventListener("click", () => playQueueAt(songs, i));
+
+      li.querySelector(".loop-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (state.loopSongs.has(song.id)) state.loopSongs.delete(song.id);
+        else state.loopSongs.add(song.id);
+        renderSongs();
+      });
 
       if (song.custom) {
         li.querySelector(".del-btn").addEventListener("click", (e) => {
@@ -138,6 +154,7 @@
     state.playingDance = state.danceKey;
     const song = songs[i];
     ui.playerBar.classList.remove("hidden");
+    document.body.classList.add("player-active");
     ui.trackTitle.textContent = song.title;
     ui.trackArtist.textContent = song.artist || "";
     Player.play(song.id);
@@ -190,7 +207,10 @@
     Player.on("pause", () => { ui.playBtn.textContent = "▶"; });
     Player.on("ended", () => {
       ui.playBtn.textContent = "▶";
-      if (ui.loopToggle.checked && state.queue.length === 1) {
+      const current = state.queue[state.index];
+      if (current && state.loopSongs.has(current.id)) {
+        playCurrent();
+      } else if (ui.loopToggle.checked && state.queue.length === 1) {
         playCurrent();
       } else if (ui.autoplayToggle.checked) {
         playNext(true);
@@ -222,10 +242,50 @@
     localStorage.setItem(THEME_KEY, light ? "light" : "dark");
   }
 
+  /* ---------- Bildschirm anlassen (Wake Lock) ---------- */
+  let wakeLock = null;
+
+  async function acquireWakeLock() {
+    if (!("wakeLock" in navigator)) return;
+    try {
+      wakeLock = await navigator.wakeLock.request("screen");
+      wakeLock.addEventListener("release", () => { wakeLock = null; });
+    } catch (e) {
+      console.warn("Wake Lock nicht möglich:", e);
+    }
+  }
+
+  async function releaseWakeLock() {
+    if (wakeLock) {
+      try { await wakeLock.release(); } catch (_) {}
+      wakeLock = null;
+    }
+  }
+
+  function setDisplayOn(on) {
+    document.body.classList.toggle("display-on", on);
+    ui.displayBtn.classList.toggle("active", on);
+    ui.displayBtn.setAttribute("aria-pressed", String(on));
+    if (on) acquireWakeLock(); else releaseWakeLock();
+  }
+
+  function toggleDisplayOn() {
+    setDisplayOn(!document.body.classList.contains("display-on"));
+  }
+
+  // Wake Lock wird beim Tab-Wechsel vom Browser freigegeben – bei Rückkehr neu anfordern
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" &&
+        document.body.classList.contains("display-on") && !wakeLock) {
+      acquireWakeLock();
+    }
+  });
+
   /* ---------- Events verdrahten ---------- */
   function wireUi() {
     ui.backBtn.addEventListener("click", showDances);
     ui.themeBtn.addEventListener("click", toggleTheme);
+    ui.displayBtn.addEventListener("click", toggleDisplayOn);
     ui.playBtn.addEventListener("click", togglePlay);
     ui.nextBtn.addEventListener("click", () => playNext(false));
     ui.prevBtn.addEventListener("click", playPrev);
@@ -255,6 +315,21 @@
     });
   }
 
+  /* ---------- iOS-Hinweis (YouTube Premium / Werbung) ---------- */
+  function maybeShowIosHint() {
+    const HINT_KEY = "mydancemusic.iosHintDismissed";
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (isIOS && !localStorage.getItem(HINT_KEY)) {
+      ui.iosHint.classList.remove("hidden");
+    }
+    ui.iosHintClose.addEventListener("click", () => {
+      ui.iosHint.classList.add("hidden");
+      localStorage.setItem(HINT_KEY, "1");
+    });
+  }
+
   /* ---------- Service Worker ---------- */
   function registerSW() {
     if ("serviceWorker" in navigator) {
@@ -274,6 +349,7 @@
     wireUi();
     Player.loadApi();
     showDances();
+    maybeShowIosHint();
     registerSW();
   }
 

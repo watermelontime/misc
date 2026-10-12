@@ -12,8 +12,8 @@ const Store = (() => {
     { key: "langsamerwalzer", name: "Langsamer Walzer", emoji: "🌙" },
     { key: "wienerwalzer", name: "Wiener Walzer", emoji: "🥂" },
     { key: "tango", name: "Tango", emoji: "🌹" },
-    { key: "slowfox", name: "Slowfox", emoji: "🎷" },
     { key: "quickstep", name: "Quickstep", emoji: "✨" },
+    { key: "slowfox", name: "Slowfox", emoji: "🎷" },
   ];
 
   let presets = {}; // aus songs.json
