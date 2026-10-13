@@ -1,27 +1,31 @@
 {
   "chacha": [
-    { "id": "6Whgn_iE5uc", "title": "Smooth (feat. Rob Thomas)", "artist": "Santana" },
-    { "id": "kKaOMnFGCaE", "title": "Sway", "artist": "Michael Bublé" },
-    { "id": "r7qovpFAGrQ", "title": "Oye Como Va", "artist": "Santana" },
-    { "id": "OkdXWJn3kdY", "title": "Let's Get Loud", "artist": "Jennifer Lopez" }
+    { "id": "xTvyyoF_LZY", "title": "XShape of You", "artist": "Ed Sheeran" },
+    { "id": "VKC_hzJ3jzg", "title": "XSeñorita", "artist": "Shawn Mendes & Camila Cabello" },
+    { "id": "BkSSOGNeWTM", "title": "XFlowers", "artist": "Miley Cyrus" },
+    { "id": "91Niv2q4gvc", "title": "X...Baby One More Time", "artist": "Britney Spears" },
+    { "id": "gBIdywV1H7I", "title": "XPerhaps, Perhaps, Perhaps", "artist": "The Pussycat Dolls" },
+    { "id": "6Whgn_iE5uc", "title": "XSmooth (feat. Rob Thomas)", "artist": "Santana" }
   ],
   "rumba": [
-    { "id": "koJlIGDImiU", "title": "Hero", "artist": "Enrique Iglesias" },
-    { "id": "izGwDsrQ1eQ", "title": "Careless Whisper", "artist": "George Michael" },
-    { "id": "qlWVQU2nFiI", "title": "Besame Mucho", "artist": "Andrea Bocelli" },
-    { "id": "qiiyq2xrSI0", "title": "Unchained Melody", "artist": "The Righteous Brothers" }
+    { "id": "izGwDsrQ1eQ", "title": "XCareless Whisper", "artist": "George Michael" },
+    { "id": "RvbjcIQNZJ8", "title": "XSacrifice", "artist": "Elton John" },
+    { "id": "hLQl3WQQoQ0", "title": "XSomeone Like You", "artist": "Adele" },
+    { "id": "koJlIGDImiU", "title": "XHero", "artist": "Enrique Iglesias" },
+    { "id": "qsfeg7k34c0", "title": "XWhat's Love Got to Do with It", "artist": "Tina Turner" },
+    { "id": "qiiyq2xrSI0", "title": "XUnchained Melody", "artist": "The Righteous Brothers" }
   ],
   "samba": [
-    { "id": "pRpeEdMmmQ0", "title": "Waka Waka (This Time for Africa)", "artist": "Shakira" },
-    { "id": "ad_lgBDE_hw", "title": "Mas Que Nada", "artist": "Sergio Mendes & Black Eyed Peas" },
-    { "id": "HQ0jFaEBE_g", "title": "Magalenha", "artist": "Sergio Mendes" },
-    { "id": "dRpBo8SqN6E", "title": "Aquarela do Brasil", "artist": "Ary Barroso" }
-  ],
+    { "id": "yAuTUWITF9I", "title": "XCéline Dion", "artist": "I'm Alive" },
+    { "id": "WMT5XzXFhUs", "title": "XLambada", "artist": "Kaoma " },
+    { "id": "_NbASTLrJu4", "title": "XBailamos", "artist": "Enrique Iglesias" },
+    { "id": "WCQuf90qf9U", "title": "XLa Bomba", "artist": "King Afrika" }
+  ], 
   "jive": [
-    { "id": "gj0Rz-uP4Mk", "title": "Jailhouse Rock", "artist": "Elvis Presley" },
-    { "id": "ZgdufzXvjqw", "title": "Rock Around the Clock", "artist": "Bill Haley & His Comets" },
-    { "id": "T7a3NsNNHto", "title": "Johnny B. Goode", "artist": "Chuck Berry" },
-    { "id": "Z-y0Bk40sj4", "title": "Shake, Rattle and Roll", "artist": "Bill Haley" }
+    { "id": "qJsXWybzLGE", "title": "XRunaround Sue ", "artist": "Matze MC & The Unknown Stefan " },
+    { "id": "EyUldX3PJng", "title": "XDear Future Husband", "artist": "Meghan Trainor" },
+    { "id": "R14lGgHgVJM", "title": "XWake Me Up Before You Go-Go", "artist": "Wham" },
+    { "id": "I57hkclh3kk", "title": "XI'm So Excited", "artist": "The Pointer Sisters" }
   ],
   "pasodoble": [
     { "id": "9jK-NcRmVcw", "title": "The Final Countdown", "artist": "Europe" },
