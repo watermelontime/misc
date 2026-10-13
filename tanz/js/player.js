@@ -5,6 +5,8 @@ const Player = (() => {
   let pending = null;     // Video-ID, die vor Ready angefordert wurde
   const handlers = {};    // { ready, play, pause, ended, time }
   let timeTimer = null;
+  let volume = 100;       // gewünschte Lautstärke (0–100), auch vor Ready
+  let rate = 1;           // gewünschte Abspielgeschwindigkeit, auch vor Ready
 
   // Von der YouTube-API global aufgerufen
   window.onYouTubeIframeAPIReady = function () {
@@ -45,6 +47,8 @@ const Player = (() => {
   function onStateChange(e) {
     switch (e.data) {
       case YT.PlayerState.PLAYING:
+        applyVolume(); // YouTube startet ggf. stummgeschaltet – Wunschlautstärke erzwingen
+        applyRate();   // gewünschte Geschwindigkeit nach Videowechsel erneut setzen
         emit("play");
         startTimeLoop();
         break;
@@ -95,10 +99,29 @@ const Player = (() => {
 
   function resume() { if (yt && ready) yt.playVideo(); }
   function pause() { if (yt && ready) yt.pauseVideo(); }
-  function setVolume(v) { if (yt && ready) yt.setVolume(v); }
+
+  function applyVolume() {
+    if (!yt || !ready) return;
+    yt.setVolume(volume);
+    if (volume === 0) yt.mute(); else yt.unMute();
+  }
+
+  function setVolume(v) {
+    volume = Math.max(0, Math.min(100, Number(v) || 0));
+    applyVolume();
+  }
+
+  function applyRate() {
+    if (yt && ready && yt.setPlaybackRate) yt.setPlaybackRate(rate);
+  }
+
+  function setPlaybackRate(r) {
+    rate = Number(r) || 1;
+    applyRate();
+  }
   function seekTo(sec) { if (yt && ready) yt.seekTo(sec, true); }
   function getState() { return yt && ready ? yt.getPlayerState() : -1; }
   function isPlaying() { return getState() === (window.YT ? YT.PlayerState.PLAYING : 1); }
 
-  return { loadApi, on, play, resume, pause, setVolume, seekTo, isPlaying };
+  return { loadApi, on, play, resume, pause, setVolume, setPlaybackRate, seekTo, isPlaying };
 })();

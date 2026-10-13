@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#ff3ca6" />
-  <title>MyDanceMusicPlayer</title>
+  <title>DanceMusic</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icons/icon.svg" />
@@ -13,11 +13,32 @@
 <body>
   <!-- Kopfzeile -->
   <header class="app-header">
+    <button id="menuBtn" class="icon-btn" aria-label="Menü" aria-haspopup="true" aria-expanded="false">☰</button>
     <button id="backBtn" class="icon-btn hidden" aria-label="Zurück">‹</button>
-    <h1 id="appTitle">MyDanceMusicPlayer</h1>
-    <button id="themeBtn" class="icon-btn" aria-label="Design umschalten">☀️</button>
+    <h1 id="appTitle">DanceMusic</h1>
+    <button id="partyBtn" class="icon-btn" aria-label="Party-Mode" title="Party-Mode">▶️</button>
     <button id="displayBtn" class="icon-btn" aria-label="Bildschirm anlassen" aria-pressed="false" title="Bildschirm anlassen">🖥️</button>
   </header>
+
+  <!-- Burger-Menü -->
+  <nav id="menu" class="menu hidden" aria-label="Hauptmenü">
+    <button class="menu-item" data-action="training">🎯 Training mode</button>
+    <button class="menu-item" data-action="party">▶️ Party mode</button>
+    <button class="menu-item" data-action="export">📤 Export</button>
+    <button class="menu-item" data-action="import">📥 Import</button>
+    <button class="menu-item" data-info="howto">How to use?</button>
+    <button class="menu-item" data-info="impressum">Impressum</button>
+    <button class="menu-item" data-info="datenschutz">Datenschutz</button>
+  </nav>
+
+  <!-- Info-Overlay (Menü-Inhalte) -->
+  <div id="infoOverlay" class="info-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="info-box">
+      <button id="infoClose" class="info-close" aria-label="Schließen">×</button>
+      <h2 id="infoTitle"></h2>
+      <div id="infoBody"></div>
+    </div>
+  </div>
 
   <main id="main">
     <!-- iOS-Hinweis: YouTube-Premium / Werbung -->
@@ -49,6 +70,37 @@
         <button type="submit" class="btn">Hinzufügen</button>
       </form>
     </section>
+
+    <!-- Ansicht: Party-Mode (Tanz-Gewichtung) -->
+    <section id="view-party" class="view hidden">
+      <div class="party-head">
+        <button id="partyStartBtn" class="party-start-btn" aria-label="Start random music">▶</button>
+        <span id="partyStartText" class="party-start-text">Start party (random dances)</span>
+        <button id="partyResetBtn" class="party-reset-btn" title="Auf Standardwerte zurücksetzen">↺ Reset</button>
+      </div>
+      <ul id="partyList" class="dance-grid party-grid"></ul>
+    </section>
+
+    <!-- Ansicht: Export -->
+    <section id="view-export" class="view hidden">
+      <div class="party-head">
+        <button id="exportBtn" class="party-start-btn" aria-label="Export My Music">📤</button>
+        <span class="party-start-text">Export My Music</span>
+      </div>
+      <ul id="exportList" class="dance-grid party-grid"></ul>
+    </section>
+
+    <!-- Ansicht: Import -->
+    <section id="view-import" class="view hidden">
+      <div class="party-head">
+        <button id="importBtn" class="party-start-btn" aria-label="Import My Music" disabled>📥</button>
+        <span class="party-start-text">Import My Music</span>
+      </div>
+      <div class="import-file-row">
+        <input type="file" id="importFile" accept="application/json,.json" />
+      </div>
+      <ul id="importList" class="dance-grid party-grid"></ul>
+    </section>
   </main>
 
   <!-- Player-Leiste -->
@@ -76,9 +128,15 @@
         <span>Autoplay</span>
       </label>
       <label class="toggle">
-        <input type="checkbox" id="loopToggle" />
-        <span>🔁 Loop List</span>
+        <input type="checkbox" id="loopToggle" checked />
+        <span>Loop List</span>
       </label>
+      <div class="speed" id="speedControl">
+        <span>⏱</span>
+        <button type="button" id="speedDown" class="speed-btn" aria-label="Langsamer">−</button>
+        <span id="speedValue" class="speed-value">100%</span>
+        <button type="button" id="speedUp" class="speed-btn" aria-label="Schneller">+</button>
+      </div>
       <div class="volume">
         <span>🔊</span>
         <input type="range" id="volume" min="0" max="100" value="100" />
