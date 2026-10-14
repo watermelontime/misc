@@ -14,9 +14,7 @@
   <!-- Kopfzeile -->
   <header class="app-header">
     <button id="menuBtn" class="icon-btn" aria-label="Menü" aria-haspopup="true" aria-expanded="false">☰</button>
-    <button id="backBtn" class="icon-btn hidden" aria-label="Zurück">‹</button>
     <h1 id="appTitle">DanceMusic</h1>
-    <button id="partyBtn" class="icon-btn" aria-label="Party-Mode" title="Party-Mode">▶️</button>
     <button id="displayBtn" class="icon-btn" aria-label="Bildschirm anlassen" aria-pressed="false" title="Bildschirm anlassen">🖥️</button>
   </header>
 
@@ -60,7 +58,10 @@
 
     <!-- Ansicht: Songliste eines Tanzes -->
     <section id="view-songs" class="view hidden">
-      <h2 id="danceTitle" class="view-title"></h2>
+      <div class="view-title-row">
+        <h2 id="danceTitle" class="view-title"></h2>
+        <button id="songsBackBtn" class="icon-btn" aria-label="Zurück zur Tanzauswahl" title="Zurück">‹</button>
+      </div>
       <ul id="songList" class="song-list"></ul>
 
       <form id="addSongForm" class="add-form">
@@ -106,6 +107,7 @@
   <!-- Player-Leiste -->
   <div id="playerBar" class="player-bar hidden">
     <div class="track-info">
+      <span id="trackEmoji" class="track-emoji" aria-hidden="true"></span>
       <span id="trackTitle" class="track-title">–</span>
       <span id="trackArtist" class="track-artist"></span>
     </div>
@@ -123,14 +125,6 @@
     </div>
 
     <div class="options-row">
-      <label class="toggle">
-        <input type="checkbox" id="autoplayToggle" checked />
-        <span>Autoplay</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="loopToggle" checked />
-        <span>Loop List</span>
-      </label>
       <div class="speed" id="speedControl">
         <span>⏱</span>
         <button type="button" id="speedDown" class="speed-btn" aria-label="Langsamer">−</button>

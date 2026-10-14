@@ -92,7 +92,6 @@ body.light .app-header {
   transition: transform 0.12s ease, background 0.2s;
 }
 .icon-btn:active { transform: scale(0.92); }
-#backBtn { font-size: 1.8rem; line-height: 1; }
 
 /* ---------- Burger-Menü ---------- */
 .menu {
@@ -179,6 +178,13 @@ body.light .app-header {
   font-size: 1.6rem;
   font-weight: 800;
 }
+.view-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.view-title-row .view-title { margin: 4px 0 16px; flex: 1; }
+#songsBackBtn { font-size: 1.8rem; line-height: 1; }
 
 /* ---------- Tanz-Grid ---------- */
 .dance-grid {
@@ -485,7 +491,17 @@ body.light .app-header {
 }
 body.light .player-bar { background: rgba(255,255,255,0.95); }
 
-.track-info { text-align: center; min-width: 0; }
+.track-info { position: relative; text-align: center; min-width: 0; }
+.track-emoji {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 1;
+}
 .track-title {
   display: block;
   font-weight: 800;

@@ -2,6 +2,12 @@
 (() => {
   const el = (id) => document.getElementById(id);
 
+  // Einstellbare Parameter
+  const config = {
+    loopList: true, // Playlist am Ende wieder von vorne starten
+    autoplay: true, // Nächsten Song automatisch abspielen
+  };
+
   // UI-Referenzen
   const ui = {
     viewDances: el("view-dances"),
@@ -21,9 +27,8 @@
     partyResetBtn: el("partyResetBtn"),
     songList: el("songList"),
     danceTitle: el("danceTitle"),
+    songsBackBtn: el("songsBackBtn"),
     appTitle: el("appTitle"),
-    backBtn: el("backBtn"),
-    partyBtn: el("partyBtn"),
     displayBtn: el("displayBtn"),
     menuBtn: el("menuBtn"),
     menu: el("menu"),
@@ -35,6 +40,7 @@
     songUrl: el("songUrl"),
     songTitle: el("songTitle"),
     playerBar: el("playerBar"),
+    trackEmoji: el("trackEmoji"),
     trackTitle: el("trackTitle"),
     trackArtist: el("trackArtist"),
     playBtn: el("playBtn"),
@@ -48,8 +54,6 @@
     speedDown: el("speedDown"),
     speedUp: el("speedUp"),
     speedValue: el("speedValue"),
-    autoplayToggle: el("autoplayToggle"),
-    loopToggle: el("loopToggle"),
     iosHint: el("iosHint"),
     iosHintClose: el("iosHintClose"),
   };
@@ -148,7 +152,6 @@
     state.danceKey = null;
     hideViews();
     ui.viewDances.classList.remove("hidden");
-    ui.backBtn.classList.add("hidden");
     setTitle(null);
     renderDances();
   }
@@ -157,7 +160,6 @@
     state.danceKey = danceKey;
     hideViews();
     ui.viewSongs.classList.remove("hidden");
-    ui.backBtn.classList.remove("hidden");
     setTitle(MODE_NAMES.training);
     const dance = Store.getDance(danceKey);
     ui.danceTitle.textContent = `${dance.emoji} ${dance.name}`;
@@ -167,7 +169,6 @@
   function showParty() {
     hideViews();
     ui.viewParty.classList.remove("hidden");
-    ui.backBtn.classList.remove("hidden");
     setTitle(MODE_NAMES.party);
     renderParty();
   }
@@ -175,7 +176,6 @@
   function showExport() {
     hideViews();
     ui.viewExport.classList.remove("hidden");
-    ui.backBtn.classList.remove("hidden");
     setTitle(MODE_NAMES.export);
     state.exportSel = new Set(Store.getDances().map((d) => d.key));
     renderExport();
@@ -184,7 +184,6 @@
   function showImport() {
     hideViews();
     ui.viewImport.classList.remove("hidden");
-    ui.backBtn.classList.remove("hidden");
     setTitle(MODE_NAMES.import);
     state.importData = null;
     state.importSel = new Set();
@@ -444,6 +443,7 @@
     const song = songs[i];
     ui.playerBar.classList.remove("hidden");
     document.body.classList.add("player-active");
+    ui.trackEmoji.textContent = Store.getDance(state.danceKey)?.emoji || "";
     ui.trackTitle.textContent = song.title;
     ui.trackArtist.textContent = song.artist || "";
     Player.play(song.id);
@@ -454,6 +454,7 @@
   function showTrack(song) {
     ui.playerBar.classList.remove("hidden");
     document.body.classList.add("player-active");
+    ui.trackEmoji.textContent = Store.getDance(song.danceKey)?.emoji || "";
     ui.trackTitle.textContent = song.title;
     ui.trackArtist.textContent = song.artist || "";
   }
@@ -513,7 +514,7 @@
         alert("Kein Tanz aktiv. Stelle mindestens einen Tanz auf 1–3 Sterne.");
         return;
       }
-      state.partyHistory.push(pick.song);
+      state.partyHistory.push({ ...pick.song, danceKey: pick.danceKey });
       state.partyPos = state.partyHistory.length - 1;
     }
     showTrack(state.partyHistory[state.partyPos]);
@@ -531,7 +532,7 @@
     if (state.index < 0) return;
     const last = state.index >= state.queue.length - 1;
     if (last) {
-      if (ui.loopToggle.checked) {
+      if (config.loopList) {
         state.index = 0;
       } else if (auto) {
         return; // Ende der Liste, kein Loop
@@ -574,15 +575,15 @@
     Player.on("ended", () => {
       ui.playBtn.textContent = "▶";
       if (state.partyMode) {
-        if (ui.autoplayToggle.checked) partyNext();
+        if (config.autoplay) partyNext();
         return;
       }
       const current = state.queue[state.index];
       if (current && state.loopSongs.has(current.id)) {
         playCurrent();
-      } else if (ui.loopToggle.checked && state.queue.length === 1) {
+      } else if (config.loopList && state.queue.length === 1) {
         playCurrent();
-      } else if (ui.autoplayToggle.checked) {
+      } else if (config.autoplay) {
         playNext(true);
       }
     });
@@ -646,8 +647,7 @@
 
   /* ---------- Events verdrahten ---------- */
   function wireUi() {
-    ui.backBtn.addEventListener("click", showDances);
-    ui.partyBtn.addEventListener("click", showParty);
+    ui.songsBackBtn.addEventListener("click", showDances);
 
     // Burger-Menü
     ui.menuBtn.addEventListener("click", (e) => {
