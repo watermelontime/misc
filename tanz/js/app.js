@@ -10,6 +10,9 @@
 
   // UI-Referenzen
   const ui = {
+    viewHome: el("view-home"),
+    homeTrainingBtn: el("homeTrainingBtn"),
+    homePartyBtn: el("homePartyBtn"),
     viewDances: el("view-dances"),
     viewSongs: el("view-songs"),
     viewParty: el("view-party"),
@@ -25,9 +28,11 @@
     partyStartBtn: el("partyStartBtn"),
     partyStartText: el("partyStartText"),
     partyResetBtn: el("partyResetBtn"),
+    partyBackBtn: el("partyBackBtn"),
     songList: el("songList"),
     danceTitle: el("danceTitle"),
     songsBackBtn: el("songsBackBtn"),
+    dancesBackBtn: el("dancesBackBtn"),
     appTitle: el("appTitle"),
     displayBtn: el("displayBtn"),
     menuBtn: el("menuBtn"),
@@ -143,16 +148,22 @@
 
   /* ---------- Views ---------- */
   function hideViews() {
-    for (const v of [ui.viewDances, ui.viewSongs, ui.viewParty, ui.viewExport, ui.viewImport]) {
+    for (const v of [ui.viewHome, ui.viewDances, ui.viewSongs, ui.viewParty, ui.viewExport, ui.viewImport]) {
       v.classList.add("hidden");
     }
+  }
+
+  function showHome() {
+    hideViews();
+    ui.viewHome.classList.remove("hidden");
+    setTitle(null);
   }
 
   function showDances() {
     state.danceKey = null;
     hideViews();
     ui.viewDances.classList.remove("hidden");
-    setTitle(null);
+    setTitle(MODE_NAMES.training);
     renderDances();
   }
 
@@ -647,7 +658,10 @@
 
   /* ---------- Events verdrahten ---------- */
   function wireUi() {
+    ui.homeTrainingBtn.addEventListener("click", showDances);
+    ui.homePartyBtn.addEventListener("click", showParty);
     ui.songsBackBtn.addEventListener("click", showDances);
+    ui.dancesBackBtn.addEventListener("click", showHome);
 
     // Burger-Menü
     ui.menuBtn.addEventListener("click", (e) => {
@@ -683,6 +697,7 @@
       Store.resetWeights();
       renderParty();
     });
+    ui.partyBackBtn.addEventListener("click", showHome);
     ui.exportBtn.addEventListener("click", doExport);
     ui.importFile.addEventListener("change", loadImportFile);
     ui.importBtn.addEventListener("click", doImport);
@@ -754,7 +769,7 @@
     wirePlayer();
     wireUi();
     Player.loadApi();
-    showDances();
+    showHome();
     maybeShowIosHint();
     registerSW();
   }

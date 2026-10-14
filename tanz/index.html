@@ -21,7 +21,7 @@
   <!-- Burger-Menü -->
   <nav id="menu" class="menu hidden" aria-label="Hauptmenü">
     <button class="menu-item" data-action="training">🎯 Training mode</button>
-    <button class="menu-item" data-action="party">▶️ Party mode</button>
+    <button class="menu-item" data-action="party">🎉 Party mode</button>
     <button class="menu-item" data-action="export">📤 Export</button>
     <button class="menu-item" data-action="import">📥 Import</button>
     <button class="menu-item" data-info="howto">How to use?</button>
@@ -50,9 +50,29 @@
         <li>Diese App neu laden.</li>
       </ol>
     </div>
+    <!-- Ansicht: Startseite (Modus-Auswahl) -->
+    <section id="view-home" class="view">
+      <h2 class="home-title">Select the dancing mode</h2>
+      <div class="home-grid">
+        <button id="homeTrainingBtn" class="home-card">
+          <span class="home-emoji">🎯</span>
+          <span class="home-name">Training mode</span>
+          <span class="home-sub">plays songs for dances</span>
+        </button>
+        <button id="homePartyBtn" class="home-card">
+          <span class="home-emoji">🎉</span>
+          <span class="home-name">Party mode</span>
+          <span class="home-sub">plays random songs</span>
+        </button>
+      </div>
+    </section>
 
     <!-- Ansicht: Tanz-Übersicht -->
-    <section id="view-dances" class="view">
+    <section id="view-dances" class="view hidden">
+      <div class="view-title-row">
+        <h2 class="view-title">Select your dance ...</h2>
+        <button id="dancesBackBtn" class="icon-btn" aria-label="Zurück zur Startseite" title="Zurück">‹</button>
+      </div>
       <ul id="danceList" class="dance-grid"></ul>
     </section>
 
@@ -76,8 +96,9 @@
     <section id="view-party" class="view hidden">
       <div class="party-head">
         <button id="partyStartBtn" class="party-start-btn" aria-label="Start random music">▶</button>
-        <span id="partyStartText" class="party-start-text">Start party (random dances)</span>
+        <span id="partyStartText" class="party-start-text">Start party<br>(random dances)</span>
         <button id="partyResetBtn" class="party-reset-btn" title="Auf Standardwerte zurücksetzen">↺ Reset</button>
+        <button id="partyBackBtn" class="icon-btn" aria-label="Zurück zur Startseite" title="Zurück">‹</button>
       </div>
       <ul id="partyList" class="dance-grid party-grid"></ul>
     </section>
