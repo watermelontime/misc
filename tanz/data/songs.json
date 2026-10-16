@@ -1,72 +1,70 @@
 {
   "chacha": [
-    { "id": "xTvyyoF_LZY", "title": "XShape of You", "artist": "Ed Sheeran" },
-    { "id": "VKC_hzJ3jzg", "title": "XSeñorita", "artist": "Shawn Mendes & Camila Cabello" },
-    { "id": "BkSSOGNeWTM", "title": "XFlowers", "artist": "Miley Cyrus" },
-    { "id": "91Niv2q4gvc", "title": "X...Baby One More Time", "artist": "Britney Spears" },
-    { "id": "gBIdywV1H7I", "title": "XPerhaps, Perhaps, Perhaps", "artist": "The Pussycat Dolls" },
-    { "id": "6Whgn_iE5uc", "title": "XSmooth (feat. Rob Thomas)", "artist": "Santana" }
+    { "id": "xTvyyoF_LZY", "title": "Shape of You", "artist": "Ed Sheeran" },
+    { "id": "VKC_hzJ3jzg", "title": "Señorita", "artist": "Shawn Mendes & Camila Cabello" },
+    { "id": "BkSSOGNeWTM", "title": "Flowers", "artist": "Miley Cyrus" },
+    { "id": "91Niv2q4gvc", "title": "...Baby One More Time", "artist": "Britney Spears" },
+    { "id": "gBIdywV1H7I", "title": "Perhaps, Perhaps, Perhaps", "artist": "The Pussycat Dolls" },
+    { "id": "6Whgn_iE5uc", "title": "Smooth (feat. Rob Thomas)", "artist": "Santana" }
   ],
   "rumba": [
-    { "id": "izGwDsrQ1eQ", "title": "XCareless Whisper", "artist": "George Michael" },
-    { "id": "RvbjcIQNZJ8", "title": "XSacrifice", "artist": "Elton John" },
-    { "id": "hLQl3WQQoQ0", "title": "XSomeone Like You", "artist": "Adele" },
-    { "id": "koJlIGDImiU", "title": "XHero", "artist": "Enrique Iglesias" },
-    { "id": "qsfeg7k34c0", "title": "XWhat's Love Got to Do with It", "artist": "Tina Turner" },
-    { "id": "qiiyq2xrSI0", "title": "XUnchained Melody", "artist": "The Righteous Brothers" }
+    { "id": "izGwDsrQ1eQ", "title": "Careless Whisper", "artist": "George Michael" },
+    { "id": "RvbjcIQNZJ8", "title": "Sacrifice", "artist": "Elton John" },
+    { "id": "hLQl3WQQoQ0", "title": "Someone Like You", "artist": "Adele" },
+    { "id": "koJlIGDImiU", "title": "Hero", "artist": "Enrique Iglesias" },
+    { "id": "qsfeg7k34c0", "title": "What's Love Got to Do with It", "artist": "Tina Turner" },
+    { "id": "qiiyq2xrSI0", "title": "Unchained Melody", "artist": "The Righteous Brothers" }
   ],
   "samba": [
-    { "id": "yAuTUWITF9I", "title": "XCéline Dion", "artist": "I'm Alive" },
-    { "id": "WMT5XzXFhUs", "title": "XLambada", "artist": "Kaoma " },
-    { "id": "_NbASTLrJu4", "title": "XBailamos", "artist": "Enrique Iglesias" },
-    { "id": "WCQuf90qf9U", "title": "XLa Bomba", "artist": "King Afrika" }
+    { "id": "yAuTUWITF9I", "title": "Céline Dion", "artist": "I'm Alive" },
+    { "id": "WMT5XzXFhUs", "title": "Lambada", "artist": "Kaoma " },
+    { "id": "_NbASTLrJu4", "title": "Bailamos", "artist": "Enrique Iglesias" },
+    { "id": "WCQuf90qf9U", "title": "La Bomba", "artist": "King Afrika" }
   ], 
   "jive": [
-    { "id": "qJsXWybzLGE", "title": "XRunaround Sue ", "artist": "Matze MC & The Unknown Stefan " },
-    { "id": "EyUldX3PJng", "title": "XDear Future Husband", "artist": "Meghan Trainor" },
-    { "id": "R14lGgHgVJM", "title": "XWake Me Up Before You Go-Go", "artist": "Wham" },
-    { "id": "I57hkclh3kk", "title": "XI'm So Excited", "artist": "The Pointer Sisters" }
+    { "id": "qJsXWybzLGE", "title": "Runaround Sue ", "artist": "Matze MC & The Unknown Stefan " },
+    { "id": "EyUldX3PJng", "title": "Dear Future Husband", "artist": "Meghan Trainor" },
+    { "id": "R14lGgHgVJM", "title": "Wake Me Up Before You Go-Go", "artist": "Wham" },
+    { "id": "I57hkclh3kk", "title": "I'm So Excited", "artist": "The Pointer Sisters" }
   ],
   "pasodoble": [
-    { "id": "9jK-NcRmVcw", "title": "The Final Countdown", "artist": "Europe" },
-    { "id": "Sv68Ft4bowY", "title": "España Cañí", "artist": "Pascual Marquina Narro" },
-    { "id": "WSeNSzJ2-rw", "title": "Carmen - Toreador Song", "artist": "Georges Bizet" },
-    { "id": "Zh2SbiGP_kY", "title": "Spanish Gypsy Dance", "artist": "Traditional" }
+    { "id": "F0y8_4dQZC0", "title": "Espana Cani", "artist": "Philharmonic Wind Orchestra" },
+    { "id": "WDsh2M_M4Ns", "title": "Herz an Herz", "artist": "Paso Doble" }
   ],
     "discofox": [
-    { "id": "ru0K8uYEZWw", "title": "Can't Stop the Feeling!", "artist": "Justin Timberlake" },
-    { "id": "09R8_2nJtjg", "title": "Sugar", "artist": "Maroon 5" },
-    { "id": "OPf0YbXqDm0", "title": "Uptown Funk", "artist": "Mark Ronson feat. Bruno Mars" },
-    { "id": "nfs8NYg7yQM", "title": "Dancing Queen", "artist": "ABBA" }
+    { "id": "ru0K8uYEZWw", "title": "XCan't Stop the Feeling!", "artist": "Justin Timberlake" },
+    { "id": "09R8_2nJtjg", "title": "XSugar", "artist": "Maroon 5" },
+    { "id": "OPf0YbXqDm0", "title": "XUptown Funk", "artist": "Mark Ronson feat. Bruno Mars" },
+    { "id": "nfs8NYg7yQM", "title": "XDancing Queen", "artist": "ABBA" }
   ],
   "langsamerwalzer": [
-    { "id": "uxpDa-c-4Mc", "title": "Moon River", "artist": "Audrey Hepburn / Henry Mancini" },
-    { "id": "25QyCxVkXwQ", "title": "Can You Feel the Love Tonight", "artist": "Elton John" },
-    { "id": "CWzrABouyeE", "title": "What a Wonderful World", "artist": "Louis Armstrong" },
-    { "id": "xg2D2zoglv8", "title": "Fascination", "artist": "Nat King Cole" }
+    { "id": "uxpDa-c-4Mc", "title": "XMoon River", "artist": "Audrey Hepburn / Henry Mancini" },
+    { "id": "25QyCxVkXwQ", "title": "XCan You Feel the Love Tonight", "artist": "Elton John" },
+    { "id": "CWzrABouyeE", "title": "XWhat a Wonderful World", "artist": "Louis Armstrong" },
+    { "id": "xg2D2zoglv8", "title": "XFascination", "artist": "Nat King Cole" }
   ],
   "wienerwalzer": [
-    { "id": "_4IRMYuE1hI", "title": "The Blue Danube (An der schönen blauen Donau)", "artist": "Johann Strauss II" },
-    { "id": "xGbp8iYROBc", "title": "Que Sera, Sera", "artist": "Doris Day" },
-    { "id": "ZhXAYSQ0M9M", "title": "Edelweiss", "artist": "The Sound of Music" },
-    { "id": "F2AKc2bxFH4", "title": "Emperor Waltz", "artist": "Johann Strauss II" }
+    { "id": "_4IRMYuE1hI", "title": "XThe Blue Danube (An der schönen blauen Donau)", "artist": "Johann Strauss II" },
+    { "id": "xGbp8iYROBc", "title": "XQue Sera, Sera", "artist": "Doris Day" },
+    { "id": "ZhXAYSQ0M9M", "title": "XEdelweiss", "artist": "The Sound of Music" },
+    { "id": "F2AKc2bxFH4", "title": "XEmperor Waltz", "artist": "Johann Strauss II" }
   ],
   "tango": [
-    { "id": "szsfpQkSR8U", "title": "Por una Cabeza", "artist": "Carlos Gardel" },
-    { "id": "lyGNgNa0yF8", "title": "La Cumparsita", "artist": "Gerardo Matos Rodríguez" },
-    { "id": "FU1J7-dtEmI", "title": "Libertango", "artist": "Astor Piazzolla" },
-    { "id": "aPmBfMQt2JA", "title": "Assassin's Tango", "artist": "John Powell" }
+    { "id": "szsfpQkSR8U", "title": "XPor una Cabeza", "artist": "Carlos Gardel" },
+    { "id": "lyGNgNa0yF8", "title": "XLa Cumparsita", "artist": "Gerardo Matos Rodríguez" },
+    { "id": "FU1J7-dtEmI", "title": "XLibertango", "artist": "Astor Piazzolla" },
+    { "id": "aPmBfMQt2JA", "title": "XAssassin's Tango", "artist": "John Powell" }
   ],
   "slowfox": [
-    { "id": "ZEcqHA7dbwM", "title": "Fly Me to the Moon", "artist": "Frank Sinatra" },
-    { "id": "4sGkyR_wVmg", "title": "L-O-V-E", "artist": "Nat King Cole" },
-    { "id": "SDTZ7iX4vTQ", "title": "Beyond the Sea", "artist": "Bobby Darin" },
-    { "id": "SUIKC9gmEA0", "title": "Cheek to Cheek", "artist": "Fred Astaire" }
+    { "id": "ZEcqHA7dbwM", "title": "XFly Me to the Moon", "artist": "Frank Sinatra" },
+    { "id": "4sGkyR_wVmg", "title": "XL-O-V-E", "artist": "Nat King Cole" },
+    { "id": "SDTZ7iX4vTQ", "title": "XBeyond the Sea", "artist": "Bobby Darin" },
+    { "id": "SUIKC9gmEA0", "title": "XCheek to Cheek", "artist": "Fred Astaire" }
   ],
   "quickstep": [
-    { "id": "r0X6C63Lso0", "title": "Sing, Sing, Sing", "artist": "Benny Goodman" },
-    { "id": "S_Nd2Nn3Zq0", "title": "Mr. Pinstripe Suit", "artist": "Big Bad Voodoo Daddy" },
-    { "id": "lhZE1aUupkY", "title": "Puttin' on the Ritz", "artist": "Fred Astaire / Taco" },
-    { "id": "PsO6ZnUZI0g", "title": "Jump, Jive an' Wail", "artist": "Louis Prima" }
+    { "id": "r0X6C63Lso0", "title": "XSing, Sing, Sing", "artist": "Benny Goodman" },
+    { "id": "S_Nd2Nn3Zq0", "title": "XMr. Pinstripe Suit", "artist": "Big Bad Voodoo Daddy" },
+    { "id": "lhZE1aUupkY", "title": "XPuttin' on the Ritz", "artist": "Fred Astaire / Taco" },
+    { "id": "PsO6ZnUZI0g", "title": "XJump, Jive an' Wail", "artist": "Louis Prima" }
   ]
 }

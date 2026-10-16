@@ -204,7 +204,7 @@ body.light .app-header {
 .home-name { font-size: 1.5rem; font-weight: 800; }
 .home-sub { font-size: 0.95rem; font-weight: 600; opacity: 0.9; }
 #homeTrainingBtn { background: linear-gradient(140deg, #ff3ca6, #7c4dff); }
-#homePartyBtn { background: linear-gradient(140deg, #00e5ff, #2bff88); }
+#homePartyBtn { background: linear-gradient(140deg, #13b4db, #2e4bbf); }
 
 .view-title {
   margin: 4px 0 16px;
@@ -215,8 +215,9 @@ body.light .app-header {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: 4px 0 16px;
 }
-.view-title-row .view-title { margin: 4px 0 16px; flex: 1; }
+.view-title-row .view-title { margin: 0; flex: 1; }
 #songsBackBtn { font-size: 1.8rem; line-height: 1; }
 
 /* ---------- Tanz-Grid ---------- */
@@ -321,7 +322,7 @@ body.light .app-header {
 /* dezente Blautöne, überschreibt die bunte Rotation */
 .party-grid .party-card,
 .party-grid .party-card:nth-child(n) {
-  background: linear-gradient(140deg, #4968a1, #2e4980);
+  background: linear-gradient(140deg, #13b4db, #2e4bbf);
 }
 
 .party-card .rating {
