@@ -401,7 +401,9 @@
       li.className = "song-item";
       if (state.danceKey === state.playingDance && i === state.index) li.classList.add("playing");
 
-      const search = encodeURIComponent(`${song.title} ${song.artist || ""}`);
+      const ytMusicUrl = song.id
+        ? `https://music.youtube.com/watch?v=${encodeURIComponent(song.id)}`
+        : `https://music.youtube.com/search?q=${encodeURIComponent(`${song.title} ${song.artist || ""}`)}`;
       const looping = state.loopSongs.has(song.id);
       li.innerHTML = `
         <span class="play-dot">♪</span>
@@ -411,8 +413,8 @@
         </span>
         <button class="loop-btn${looping ? " active" : ""}" title="Lied wiederholen"
            aria-label="Lied wiederholen" aria-pressed="${looping}">🔂</button>
-        <a class="yt-link" href="https://www.youtube.com/results?search_query=${search}"
-           target="_blank" rel="noopener" title="Auf YouTube suchen" aria-label="Auf YouTube suchen">🔎</a>
+        <a class="yt-link" href="${ytMusicUrl}"
+           target="_blank" rel="noopener" title="In YouTube Music öffnen" aria-label="In YouTube Music öffnen">🔎</a>
         ${song.custom ? '<button class="del-btn" title="Entfernen" aria-label="Entfernen">🗑</button>' : ""}`;
 
       li.querySelector(".meta").addEventListener("click", () => playQueueAt(songs, i));

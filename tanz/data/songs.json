@@ -1,70 +1,69 @@
 {
   "chacha": [
-    { "id": "xTvyyoF_LZY", "title": "Shape of You", "artist": "Ed Sheeran" },
-    { "id": "VKC_hzJ3jzg", "title": "Señorita", "artist": "Shawn Mendes & Camila Cabello" },
-    { "id": "BkSSOGNeWTM", "title": "Flowers", "artist": "Miley Cyrus" },
-    { "id": "91Niv2q4gvc", "title": "...Baby One More Time", "artist": "Britney Spears" },
-    { "id": "gBIdywV1H7I", "title": "Perhaps, Perhaps, Perhaps", "artist": "The Pussycat Dolls" },
-    { "id": "6Whgn_iE5uc", "title": "Smooth (feat. Rob Thomas)", "artist": "Santana" }
+    { "id": "pRv2IXcQWcs", "title": "Kiss Me", "artist": "Dermot Kennedy" },
+    { "id": "6Whgn_iE5uc", "title": "Smooth (feat. Rob Thomas)", "artist": "Santana" },
+    { "id": "kKaOMnFGCaE", "title": "Sway", "artist": "Michael Bublé" },
+    { "id": "r7qovpFAGrQ", "title": "Oye Como Va", "artist": "Santana" },
+    { "id": "OkdXWJn3kdY", "title": "Let's Get Loud", "artist": "Jennifer Lopez" }
   ],
   "rumba": [
-    { "id": "izGwDsrQ1eQ", "title": "Careless Whisper", "artist": "George Michael" },
-    { "id": "RvbjcIQNZJ8", "title": "Sacrifice", "artist": "Elton John" },
-    { "id": "hLQl3WQQoQ0", "title": "Someone Like You", "artist": "Adele" },
     { "id": "koJlIGDImiU", "title": "Hero", "artist": "Enrique Iglesias" },
-    { "id": "qsfeg7k34c0", "title": "What's Love Got to Do with It", "artist": "Tina Turner" },
+    { "id": "izGwDsrQ1eQ", "title": "Careless Whisper", "artist": "George Michael" },
+    { "id": "qlWVQU2nFiI", "title": "Besame Mucho", "artist": "Andrea Bocelli" },
     { "id": "qiiyq2xrSI0", "title": "Unchained Melody", "artist": "The Righteous Brothers" }
   ],
   "samba": [
-    { "id": "yAuTUWITF9I", "title": "Céline Dion", "artist": "I'm Alive" },
-    { "id": "WMT5XzXFhUs", "title": "Lambada", "artist": "Kaoma " },
-    { "id": "_NbASTLrJu4", "title": "Bailamos", "artist": "Enrique Iglesias" },
-    { "id": "WCQuf90qf9U", "title": "La Bomba", "artist": "King Afrika" }
-  ], 
+    { "id": "pRpeEdMmmQ0", "title": "Waka Waka (This Time for Africa)", "artist": "Shakira" },
+    { "id": "ad_lgBDE_hw", "title": "Mas Que Nada", "artist": "Sergio Mendes & Black Eyed Peas" },
+    { "id": "HQ0jFaEBE_g", "title": "Magalenha", "artist": "Sergio Mendes" },
+    { "id": "dRpBo8SqN6E", "title": "Aquarela do Brasil", "artist": "Ary Barroso" }
+  ],
   "jive": [
-    { "id": "qJsXWybzLGE", "title": "Runaround Sue ", "artist": "Matze MC & The Unknown Stefan " },
-    { "id": "EyUldX3PJng", "title": "Dear Future Husband", "artist": "Meghan Trainor" },
-    { "id": "R14lGgHgVJM", "title": "Wake Me Up Before You Go-Go", "artist": "Wham" },
-    { "id": "I57hkclh3kk", "title": "I'm So Excited", "artist": "The Pointer Sisters" }
+    { "id": "gj0Rz-uP4Mk", "title": "Jailhouse Rock", "artist": "Elvis Presley" },
+    { "id": "ZgdufzXvjqw", "title": "Rock Around the Clock", "artist": "Bill Haley & His Comets" },
+    { "id": "T7a3NsNNHto", "title": "Johnny B. Goode", "artist": "Chuck Berry" },
+    { "id": "Z-y0Bk40sj4", "title": "Shake, Rattle and Roll", "artist": "Bill Haley" }
   ],
   "pasodoble": [
-    { "id": "F0y8_4dQZC0", "title": "Espana Cani", "artist": "Philharmonic Wind Orchestra" },
-    { "id": "WDsh2M_M4Ns", "title": "Herz an Herz", "artist": "Paso Doble" }
+    { "id": "9jK-NcRmVcw", "title": "The Final Countdown", "artist": "Europe" },
+    { "id": "Sv68Ft4bowY", "title": "España Cañí", "artist": "Pascual Marquina Narro" },
+    { "id": "WSeNSzJ2-rw", "title": "Carmen - Toreador Song", "artist": "Georges Bizet" },
+    { "id": "Zh2SbiGP_kY", "title": "Spanish Gypsy Dance", "artist": "Traditional" }
   ],
     "discofox": [
-    { "id": "ru0K8uYEZWw", "title": "XCan't Stop the Feeling!", "artist": "Justin Timberlake" },
-    { "id": "09R8_2nJtjg", "title": "XSugar", "artist": "Maroon 5" },
-    { "id": "OPf0YbXqDm0", "title": "XUptown Funk", "artist": "Mark Ronson feat. Bruno Mars" },
-    { "id": "nfs8NYg7yQM", "title": "XDancing Queen", "artist": "ABBA" }
+    { "id": "ru0K8uYEZWw", "title": "Can't Stop the Feeling!", "artist": "Justin Timberlake" },
+    { "id": "09R8_2nJtjg", "title": "Sugar", "artist": "Maroon 5" },
+    { "id": "OPf0YbXqDm0", "title": "Uptown Funk", "artist": "Mark Ronson feat. Bruno Mars" },
+    { "id": "nfs8NYg7yQM", "title": "Dancing Queen", "artist": "ABBA" }
   ],
   "langsamerwalzer": [
-    { "id": "uxpDa-c-4Mc", "title": "XMoon River", "artist": "Audrey Hepburn / Henry Mancini" },
-    { "id": "25QyCxVkXwQ", "title": "XCan You Feel the Love Tonight", "artist": "Elton John" },
-    { "id": "CWzrABouyeE", "title": "XWhat a Wonderful World", "artist": "Louis Armstrong" },
-    { "id": "xg2D2zoglv8", "title": "XFascination", "artist": "Nat King Cole" }
+    { "id": "uxpDa-c-4Mc", "title": "Moon River", "artist": "Audrey Hepburn / Henry Mancini" },
+    { "id": "25QyCxVkXwQ", "title": "Can You Feel the Love Tonight", "artist": "Elton John" },
+    { "id": "CWzrABouyeE", "title": "What a Wonderful World", "artist": "Louis Armstrong" },
+    { "id": "xg2D2zoglv8", "title": "Fascination", "artist": "Nat King Cole" }
   ],
   "wienerwalzer": [
-    { "id": "_4IRMYuE1hI", "title": "XThe Blue Danube (An der schönen blauen Donau)", "artist": "Johann Strauss II" },
-    { "id": "xGbp8iYROBc", "title": "XQue Sera, Sera", "artist": "Doris Day" },
-    { "id": "ZhXAYSQ0M9M", "title": "XEdelweiss", "artist": "The Sound of Music" },
-    { "id": "F2AKc2bxFH4", "title": "XEmperor Waltz", "artist": "Johann Strauss II" }
+    { "id": "_4IRMYuE1hI", "title": "The Blue Danube", "artist": "Johann Strauss II" },
+    { "id": "xGbp8iYROBc", "title": "Que Sera, Sera", "artist": "Doris Day" },
+    { "id": "ZhXAYSQ0M9M", "title": "Edelweiss", "artist": "The Sound of Music" },
+    { "id": "F2AKc2bxFH4", "title": "Emperor Waltz", "artist": "Johann Strauss II" }
   ],
   "tango": [
-    { "id": "szsfpQkSR8U", "title": "XPor una Cabeza", "artist": "Carlos Gardel" },
-    { "id": "lyGNgNa0yF8", "title": "XLa Cumparsita", "artist": "Gerardo Matos Rodríguez" },
-    { "id": "FU1J7-dtEmI", "title": "XLibertango", "artist": "Astor Piazzolla" },
-    { "id": "aPmBfMQt2JA", "title": "XAssassin's Tango", "artist": "John Powell" }
+    { "id": "szsfpQkSR8U", "title": "Por una Cabeza", "artist": "Carlos Gardel" },
+    { "id": "lyGNgNa0yF8", "title": "La Cumparsita", "artist": "Gerardo Matos Rodríguez" },
+    { "id": "FU1J7-dtEmI", "title": "Libertango", "artist": "Astor Piazzolla" },
+    { "id": "aPmBfMQt2JA", "title": "Assassin's Tango", "artist": "John Powell" }
   ],
   "slowfox": [
-    { "id": "ZEcqHA7dbwM", "title": "XFly Me to the Moon", "artist": "Frank Sinatra" },
-    { "id": "4sGkyR_wVmg", "title": "XL-O-V-E", "artist": "Nat King Cole" },
-    { "id": "SDTZ7iX4vTQ", "title": "XBeyond the Sea", "artist": "Bobby Darin" },
-    { "id": "SUIKC9gmEA0", "title": "XCheek to Cheek", "artist": "Fred Astaire" }
+    { "id": "ZEcqHA7dbwM", "title": "Fly Me to the Moon", "artist": "Frank Sinatra" },
+    { "id": "4sGkyR_wVmg", "title": "L-O-V-E", "artist": "Nat King Cole" },
+    { "id": "SDTZ7iX4vTQ", "title": "Beyond the Sea", "artist": "Bobby Darin" },
+    { "id": "SUIKC9gmEA0", "title": "Cheek to Cheek", "artist": "Fred Astaire" }
   ],
   "quickstep": [
-    { "id": "r0X6C63Lso0", "title": "XSing, Sing, Sing", "artist": "Benny Goodman" },
-    { "id": "S_Nd2Nn3Zq0", "title": "XMr. Pinstripe Suit", "artist": "Big Bad Voodoo Daddy" },
-    { "id": "lhZE1aUupkY", "title": "XPuttin' on the Ritz", "artist": "Fred Astaire / Taco" },
-    { "id": "PsO6ZnUZI0g", "title": "XJump, Jive an' Wail", "artist": "Louis Prima" }
+    { "id": "r0X6C63Lso0", "title": "Sing, Sing, Sing", "artist": "Benny Goodman" },
+    { "id": "S_Nd2Nn3Zq0", "title": "Mr. Pinstripe Suit", "artist": "Big Bad Voodoo Daddy" },
+    { "id": "lhZE1aUupkY", "title": "Puttin' on the Ritz", "artist": "Fred Astaire / Taco" },
+    { "id": "PsO6ZnUZI0g", "title": "Jump, Jive an' Wail", "artist": "Louis Prima" }
   ]
 }
