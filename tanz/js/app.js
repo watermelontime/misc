@@ -498,7 +498,7 @@
   function setPartyButton(running) {
     ui.partyStartBtn.textContent = running ? "■" : "▶";
     ui.partyStartBtn.setAttribute("aria-label", running ? "Stop party" : "Start random music");
-    ui.partyStartText.textContent = running ? "Stop party" : "Start party (random dances)";
+    ui.partyStartText.textContent = running ? "Stop party" : "Start party";
   }
 
   // Geschwindigkeitsregler nur im Training-Modus zeigen

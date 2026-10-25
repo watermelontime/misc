@@ -218,7 +218,7 @@ body.light .app-header {
   margin: 4px 0 16px;
 }
 .view-title-row .view-title { margin: 0; flex: 1; }
-#songsBackBtn { font-size: 1.8rem; line-height: 1; }
+.back-btn { font-size: 1.8rem; line-height: 1; }
 
 /* ---------- Tanz-Grid ---------- */
 .dance-grid {
