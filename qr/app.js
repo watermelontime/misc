@@ -88,11 +88,12 @@ function insertWifiTemplate() {
 }
 
 function insertPhoneTemplate() {
-    document.getElementById('text-input').value = "tel:<Telefonnummer>";
+    document.getElementById('text-input').value = "tel:<Phone number>";
 }
 
 function insertEmailTemplate() {
-    document.getElementById('text-input').value = "mailto:<adresse@example.com>";
+    document.getElementById('text-input').value =
+        "mailto:<address@example.com>?cc=<copy@example.com>&bcc=<blindcopy@example.com>&subject=<Subject>&body=<Message text>";
 }
 
 function insertWebsiteTemplate() {
@@ -107,11 +108,11 @@ function insertVCardTemplate() {
     document.getElementById('text-input').value =
 `BEGIN:VCARD
 VERSION:3.0
-N:<Nachname>;<Vorname>;;;
-FN:<Vorname> <Nachname>
-ORG:<Firma>
-TEL;TYPE=work,voice:<Telefonnummer>
-EMAIL;TYPE=internet:<E-Mail-Adresse>
+N:<Last name>;<First name>;;;
+FN:<First name> <Last name>
+ORG:<Company>
+TEL;TYPE=work,voice:<Phone number>
+EMAIL;TYPE=internet:<E-mail address>
 END:VCARD`;
 }
 
@@ -119,19 +120,19 @@ function insertVCardExtendedTemplate() {
     document.getElementById('text-input').value =
 `BEGIN:VCARD
 VERSION:3.0
-N:<Nachname>;<Vorname>;<Mittelname>;<Prefix>;<Suffix>
-FN:<Vorname> <Nachname>
-ORG:<Firma>;<Abteilung>
-TITLE:<Position/Titel>
-PHOTO;VALUE=URL;TYPE=JPEG:<https://example.com/pfad/zum/bild.jpg>
-TEL;TYPE=cell,voice:<Mobiltelefon>
-TEL;TYPE=work,voice:<Telefon Arbeit>
-TEL;TYPE=home,voice:<Telefon Privat>
-EMAIL;TYPE=work:<arbeit@example.com>
-EMAIL;TYPE=home:<privat@example.com>
-ADR;TYPE=work:;;<Strasse und Hausnummer>;<Ort>;<Bundesland>;<PLZ>;<Land>
-URL:<https://webseite.example.com>
-NOTE:<Notizen oder weitere Details>
+N:<Last name>;<First name>;<Middle name>;<Prefix>;<Suffix>
+FN:<First name> <Last name>
+ORG:<Company>;<Department>
+TITLE:<Position/Title>
+PHOTO;VALUE=URL;TYPE=JPEG:<https://example.com/path/to/image.jpg>
+TEL;TYPE=cell,voice:<Mobile phone>
+TEL;TYPE=work,voice:<Phone work>
+TEL;TYPE=home,voice:<Phone private>
+EMAIL;TYPE=work:<work@example.com>
+EMAIL;TYPE=home:<private@example.com>
+ADR;TYPE=work:;;<Street and house number>;<City>;<State>;<ZIP>;<Country>
+URL:<https://website.example.com>
+NOTE:<Notes or further details>
 END:VCARD`;
 }
 
