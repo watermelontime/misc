@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a78d6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Tracker" />
+  <title>Themen-Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <select id="topicSelect" aria-label="Thema auswählen"></select>
+    <button id="newTopicBtn" class="btn primary">＋ Neu</button>
+    <button id="editTopicBtn" class="btn icon" aria-label="Thema bearbeiten" title="Thema bearbeiten">⚙</button>
+    <button id="dataBtn" class="btn icon" aria-label="Daten: Export und Import" title="Daten: Export und Import">⋮</button>
+  </header>
+
+  <main>
+    <div id="banner" class="banner hidden" role="status"></div>
+
+    <section id="emptyState" class="card hidden">
+      <h2>Willkommen</h2>
+      <p>Lege dein erstes Thema an, z.B. „Allergie" oder „Sport". Zu jedem Thema erfasst du bis zu 8 Werte.</p>
+      <button id="firstTopicBtn" class="btn primary">＋ Erstes Thema anlegen</button>
+    </section>
+
+    <div id="topicView" class="hidden">
+      <section class="card">
+        <div class="card-head">
+          <h2>Diagramm</h2>
+          <button id="resetZoomBtn" class="btn small hidden">Alles zeigen</button>
+        </div>
+        <div id="chartWrap" class="chart-wrap"><canvas id="chart" aria-label="Verlauf der Werte, normiert auf den Wertebereich"></canvas></div>
+        <p id="chartEmpty" class="muted hidden">Noch keine Werte erfasst.</p>
+        <p id="chartHint" class="muted small-text">Werte in % des jeweiligen Wertebereichs. Mit zwei Fingern zoomen, mit einem verschieben, Punkt antippen für echte Werte.</p>
+      </section>
+
+      <section class="card">
+        <h2>Neue Werte</h2>
+        <div id="newEntryForm"></div>
+        <button id="saveEntryBtn" class="btn primary wide">Eintrag speichern</button>
+      </section>
+
+      <section class="card">
+        <h2>Historie</h2>
+        <div id="history"></div>
+        <button id="moreBtn" class="btn wide hidden">Mehr anzeigen</button>
+      </section>
+    </div>
+  </main>
+
+  <!-- Thema bearbeiten -->
+  <dialog id="topicDialog">
+    <div class="dialog-head">
+      <h2>Thema bearbeiten</h2>
+      <button class="btn primary" data-close>Fertig</button>
+    </div>
+    <div id="topicDialogBody"></div>
+  </dialog>
+
+  <!-- Eintrag bearbeiten -->
+  <dialog id="entryDialog">
+    <div class="dialog-head"><h2>Eintrag bearbeiten</h2></div>
+    <div id="entryDialogBody"></div>
+    <div class="dialog-actions">
+      <button class="btn" data-close>Abbrechen</button>
+      <button id="entryDialogSave" class="btn primary">Speichern</button>
+    </div>
+  </dialog>
+
+  <!-- Daten: Export / Import / Speicherstatus -->
+  <dialog id="dataDialog">
+    <div class="dialog-head">
+      <h2>Daten</h2>
+      <button class="btn" data-close>Schließen</button>
+    </div>
+    <p id="storageStatus" class="muted"></p>
+    <button id="exportBtn" class="btn wide">📤 Export (JSON-Datei)</button>
+    <button id="importBtn" class="btn wide">📥 Import (JSON-Datei)</button>
+    <input id="importFile" type="file" accept="application/json,.json" class="hidden" />
+    <p class="muted small-text">Der Export enthält alle Themen, Parameter, Einträge und Notizen. Bewahre die Datei außerhalb des Handys auf – sie ist dein Backup.</p>
+  </dialog>
+
+  <!-- Rückfrage -->
+  <dialog id="confirmDialog">
+    <h2 id="confirmTitle"></h2>
+    <p id="confirmText"></p>
+    <div id="confirmActions" class="dialog-actions stacked"></div>
+  </dialog>
+
+  <div id="toast" class="toast hidden" role="alert"></div>
+
+  <script src="lib/chart.umd.js"></script>
+  <script src="lib/hammer.min.js"></script>
+  <script src="lib/chartjs-plugin-zoom.min.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
