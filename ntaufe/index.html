@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taufe – Versionen</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
+  nav {
+    position: relative; height: 26px; display: flex; align-items: center;
+    justify-content: center; gap: 4px; padding: 0 8px;
+    background: #222; font: 12px/1 system-ui, sans-serif;
+  }
+  nav a {
+    color: #ccc; background: #444; text-decoration: none;
+    padding: 5px 10px; border-radius: 3px;
+  }
+  nav a:hover { color: #fff; background: #555; }
+  nav a.active { color: #222; background: #eee; font-weight: 600; }
+  nav .hint { position: absolute; right: 8px; color: #666; font-size: 11px; }
+  @media (max-width: 480px) { nav .hint { display: none; } }
+  iframe { display: block; border: 0; width: 100%; height: calc(100% - 26px); }
+</style>
+</head>
+<body>
+<nav id="nav"><span class="hint">← / → wechseln</span></nav>
+<iframe id="frame" title="Version"></iframe>
+<script>
+  const versions = ['v1', 'v2', 'v3', 'v4', 'v5'];
+  const nav = document.getElementById('nav');
+  const frame = document.getElementById('frame');
+  const hint = nav.querySelector('.hint');
+
+  versions.forEach(v => {
+    const a = document.createElement('a');
+    a.href = '#' + v;
+    a.textContent = v;
+    nav.insertBefore(a, hint);
+  });
+
+  function show() {
+    let v = location.hash.slice(1);
+    if (!versions.includes(v)) v = versions[0];
+    frame.src = v + '.html';
+    nav.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.textContent === v));
+  }
+
+  function step(d) {
+    const cur = Math.max(0, versions.indexOf(location.hash.slice(1)));
+    location.hash = versions[(cur + d + versions.length) % versions.length];
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
+
+  window.addEventListener('hashchange', show);
+  show();
+</script>
+</body>
+</html>
